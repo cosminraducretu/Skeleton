@@ -91,6 +91,21 @@ namespace Testing1
             Assert.AreEqual(AnAvailability.Availability, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //create an boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 StaffID = 21;
+            //invoke the method 
+            Found = AnStaff.Find(StaffID);
+            //test to see if the result is true 
+            Assert.IsTrue(Found);
+
+        }
     }
 }
 
