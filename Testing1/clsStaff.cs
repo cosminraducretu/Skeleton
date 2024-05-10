@@ -1,4 +1,6 @@
-﻿namespace Testing1
+﻿using System;
+
+namespace Testing1
 {
     public class clsStaff
     {
@@ -8,5 +10,10 @@
         public bool Availability { get; internal set; }
         public string LastName { get; internal set; }
         public string FirstName { get; internal set; }
+
+        internal bool Find(int staffID)
+        {
+            return true;
+        }
     }
 }
