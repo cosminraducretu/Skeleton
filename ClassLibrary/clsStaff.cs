@@ -1,12 +1,19 @@
-﻿namespace ClassLibrary
+﻿using System;
+
+namespace ClassLibrary
 {
     public class clsStaff
     {
-        public bool Availability { get; set; }
-        public int Salary { get; set; }
+        public int Id { get; set; }
         public string Department { get; set; }
-        public string FistName { get; set; }
+        public int Salary { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int StaffID { get; set; }
+        public bool Availability { get; set; }
+
+        public bool Find(int staffID)
+        {
+            return true;
+        }
     }
 }
