@@ -125,11 +125,11 @@ namespace Testing1
             {
                 OK = false;
             }
+
             // test to see that the result is correct 
             Assert.IsTrue(OK);
         }
         [TestMethod]
-
         public void TestFirstNameFound()
         {
             //create an instance of the class we want to create

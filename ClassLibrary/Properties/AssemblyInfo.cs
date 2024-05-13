@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -34,3 +35,22 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+namespace ClassLibrary
+{
+    public class ACustomer
+    {
+        public static string Customer { get; set; }
+        public static string Email { get; set; }
+
+        public static bool Find(int iD)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ASubscriptionPlan
+    {
+        public static string SubscriptionPlan { get; set; }
+    }
+}
