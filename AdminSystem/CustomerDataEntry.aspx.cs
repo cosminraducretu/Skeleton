@@ -16,24 +16,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clCustomer
         clsCustomer AnCustomer = new clsCustomer();
-        //capture the ID
-        AnCustomer.ID = Convert.ToInt16(txtID.Text);
         //capture the FirstName
-        AnCustomer.FirstName = txtFirstName.Text;
+        string FirstName = txtFirstName.Text;
         //capture the LastName
-        AnCustomer.LastName = txtLastName.Text;
+        string LastName = txtLastName.Text;
         //capture the Email
-        AnCustomer.Email = txtEmail.Text;
+        string Email = txtEmail.Text;
         //capture the SubscriptionPlan
-        AnCustomer.SubscriptionPlan = txtSubscriptionPlan.Text;
+        string SubscriptionPlan = txtSubscriptionPlan.Text;
         //capture the CheckBox
-        AnCustomer.Age = Convert.ToInt32(txtAge.Text);
+        string Age = txtAge.Text;
         //capture the CheckBox
-        AnCustomer.SubscriptionStatus = ChkSubscriptionStatus.Checked;
-        //store in the session object
-        Session["AnCustomer"] = AnCustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
+        string SubscriptionStatus = ChkSubscriptionStatus.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
+        if (Error == "")
+        {
+            //capture the FirstName
+            AnCustomer.FirstName = FirstName;
+            //capture the LastName
+            AnCustomer.LastName = LastName;
+            //capture the Email
+            AnCustomer.Email = Email;
+            //capture the SubscriptionPlan
+            AnCustomer.SubscriptionPlan = SubscriptionPlan;
+            //capture the Age
+            AnCustomer.Age = Convert.ToInt32(Age);
+            //store in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message 
+            lblError.Text = Error;
+        }
     }
 
 }
