@@ -81,21 +81,25 @@ namespace ClassLibrary
             {
                 Error = Error + "The SubscriptionPlan must be less than 50 : ";
             }
-            //if the Age is blank
-            if (Age == 0)
+            // Check if age is less than the minimum age
+            if (Age < 18)
             {
-
-                //record the error
-                Error = Error + "The Age may not be blank : ";
+                Error = Error + "The age must be 18 or older. ";
             }
+
+            // Check if age is greater than the maximum age
             if (Age > 75)
             {
-                Error = Error + "The Age must be less than 75 : ";
+                Error = Error + "The age must be 75 or younger. ";
             }
             //return any error messages
             return Error;
         }
 
+        public string Valid(string firstName, string lastName, string email, string subscriptionPlan, string Age)
+        {
+           
+        }
     }
 }
     
