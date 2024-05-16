@@ -30,8 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StaffViewer.aspx");
 
     }
-
-    protected void btnFInd_Click (object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the address class
         clsStaff AnStaff = new clsStaff();
@@ -54,5 +53,4 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkActive.Checked = AnStaff.Availability;
         }
     }
-
 }
