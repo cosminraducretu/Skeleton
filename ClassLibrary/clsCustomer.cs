@@ -24,19 +24,39 @@ namespace ClassLibrary
 
         public bool Find(int ID)
         {
-            mID = 21;
-            mFirstName = "Test First Name";
-            mLastName = "Test Last Name";
-            mEmail = "Test Email";
-            mSubscriptionPlan = "Test Plan";
-            mSubscriptionStatus = true;
-            mAge = 1;
-            return true;
+            //create an insance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for 
+            DB.AddParameter("@ID", ID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByID");
+            //if one record is found (there should be either one or zero
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mID = Convert.ToInt32(DB.DataTable.Rows[0]["ID"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mSubscriptionPlan = Convert.ToString(DB.DataTable.Rows[0]["SubscriptionPlan"]);
+                mSubscriptionStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["SubscriptionStatus"]);
+                mAge = Convert.ToInt32(DB.DataTable.Rows[0]["Age"]);
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+
+            }
         }
-        public string Valid(string FirstName, string LastName, string Email, string SubscriptionPlan, int Age)
+        public string Valid(string FirstName, string LastName, string Email, string SubscriptionPlan, string Age)
         {
             //create a string variable to store the error
             string Error = "";
+            int Agee;
+            Agee = Convert.ToInt32(Age);
             //if the FirstName is blank
             if (FirstName.Length == 0)
             {
@@ -82,13 +102,13 @@ namespace ClassLibrary
                 Error = Error + "The SubscriptionPlan must be less than 50 : ";
             }
             // Check if age is less than the minimum age
-            if (Age < 18)
+            if (Agee < 18)
             {
                 Error = Error + "The age must be 18 or older. ";
             }
 
             // Check if age is greater than the maximum age
-            if (Age > 75)
+            if (Agee > 75)
             {
                 Error = Error + "The age must be 75 or younger. ";
             }
@@ -96,10 +116,7 @@ namespace ClassLibrary
             return Error;
         }
 
-        public string Valid(string firstName, string lastName, string email, string subscriptionPlan, string Age)
-        {
-           
-        }
+     
     }
 }
     
