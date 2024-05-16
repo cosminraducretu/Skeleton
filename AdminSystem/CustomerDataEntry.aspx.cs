@@ -16,6 +16,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clCustomer
         clsCustomer AnCustomer = new clsCustomer();
+        //capture the ID
+        string ID = txtID.Text;
         //capture the FirstName
         string FirstName = txtFirstName.Text;
         //capture the LastName

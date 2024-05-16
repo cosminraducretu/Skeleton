@@ -12,7 +12,7 @@ namespace Testing2
         string LastName = "Greenfield";
         string Email = "DannyGreenfield@gmail.com";
         string SubscriptionPlan = "Standard";
-        int Age = 53;
+        string Age = "53";
     
     
         [TestMethod]
@@ -118,7 +118,7 @@ namespace Testing2
             //create an boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            int ID = 21;
+            int ID = 8;
             //invoke the method 
             Found = ACustomer.Find(ID);
             //test to see if the result is true 
@@ -136,11 +136,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the ID property
-            if (AnCustomer.ID != 21)
+            if (AnCustomer.ID != 8)
             {
                 OK = false;
             }
@@ -158,11 +158,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the FirstName property
-            if (AnCustomer.FirstName != "Test First Name")
+            if (AnCustomer.FirstName != "Golda")
             {
                 OK = false;
             }
@@ -180,11 +180,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the LastName property
-            if (AnCustomer.LastName != "Test Last Name")
+            if (AnCustomer.LastName != "Pechab")
             {
                 OK = false;
             }
@@ -202,10 +202,10 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //check the Email property
             Found = AnCustomer.Find(ID);
-            if (AnCustomer.Email != "Test Email")
+            if (AnCustomer.Email != "Golda@gmail.com")
             {
                 OK = false;
             }
@@ -223,11 +223,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the SubscriptionPlan property
-            if (AnCustomer.SubscriptionPlan != "Test Plan")
+            if (AnCustomer.SubscriptionPlan != "Basic")
             {
                 OK = false;
             }
@@ -246,11 +246,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the Age property
-            if (AnCustomer.Age != 1)
+            if (AnCustomer.Age != 19)
             {
                 OK = false;
             }
@@ -269,7 +269,7 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 21;
+            Int32 ID = 8;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the SubscriptionStatus property
@@ -762,8 +762,12 @@ namespace Testing2
             clsCustomer AnCustomer = new clsCustomer();
             //string variable to store any error message
             String Error = "";
+            //create a variable to store the test age data
+            int TestAge;
+            //set the age to today's age
+            TestAge = 0;
             //this should fail
-            int Age = 1;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -776,7 +780,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should fail
-            int Age = 17;
+            int TestAge;
+            TestAge = 17;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -790,8 +796,10 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            int Age = 18;
-            //invoke the method
+            int TestAge;
+            TestAge = 18;
+            string Age = TestAge.ToString();
+            //invoke the method;
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -804,7 +812,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            int Age = 19;
+            int TestAge;
+            TestAge = 19;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -818,7 +828,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            int Age = 74;
+            int TestAge;
+            TestAge = 74;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -832,7 +844,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            int Age = 75;      
+            int TestAge;
+            TestAge = 75;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -847,7 +861,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should fail
-            int Age = 76;        
+            int TestAge;
+            TestAge = 76;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -861,7 +877,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            int Age = 38;
+            int TestAge ;
+            TestAge = 38;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
@@ -875,7 +893,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should Fail
-            int Age = 500;
+            int TestAge;
+            TestAge = 500;
+            string Age = TestAge.ToString();
             //invoke the method
             Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
             //test to see that the result is correct
