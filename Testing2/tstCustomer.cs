@@ -118,15 +118,15 @@ namespace Testing2
             //create an boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            int ID = 8;
+            int ID =  3;
             //invoke the method 
             Found = ACustomer.Find(ID);
             //test to see if the result is true 
             Assert.IsTrue(Found);
         }
-
+        
+          
         [TestMethod]
-
         public void TestIDFound()
         {
             //create an instance of the class we want to create
@@ -136,11 +136,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the ID property
-            if (AnCustomer.ID != 8)
+            if (AnCustomer.ID != 3)
             {
                 OK = false;
             }
@@ -158,11 +158,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the FirstName property
-            if (AnCustomer.FirstName != "Golda")
+            if (AnCustomer.FirstName != "Danny")
             {
                 OK = false;
             }
@@ -180,11 +180,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the LastName property
-            if (AnCustomer.LastName != "Pechab")
+            if (AnCustomer.LastName != "Greenfield")
             {
                 OK = false;
             }
@@ -202,10 +202,10 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //check the Email property
             Found = AnCustomer.Find(ID);
-            if (AnCustomer.Email != "Golda@gmail.com")
+            if (AnCustomer.Email != "Danny@gmail.com")
             {
                 OK = false;
             }
@@ -223,11 +223,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the SubscriptionPlan property
-            if (AnCustomer.SubscriptionPlan != "Basic")
+            if (AnCustomer.SubscriptionPlan != "Free")
             {
                 OK = false;
             }
@@ -246,11 +246,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the Age property
-            if (AnCustomer.Age != 19)
+            if (AnCustomer.Age != 20)
             {
                 OK = false;
             }
@@ -269,7 +269,7 @@ namespace Testing2
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ID = 8;
+            Int32 ID = 3;
             //invoke the method
             Found = AnCustomer.Find(ID);
             //check the SubscriptionStatus property

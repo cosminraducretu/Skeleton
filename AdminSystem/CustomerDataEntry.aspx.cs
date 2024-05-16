@@ -58,4 +58,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsCustomer AnCustomer = new clsCustomer();
+        //create a variable to store the primary key
+        Int32 ID;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        ID = Convert.ToInt32(txtID.Text);
+        //find the record
+        Found = AnCustomer.Find(ID);
+        //if found
+        if (Found == true) {
+            //display the values of the properties in the form
+            txtFirstName.Text = AnCustomer.FirstName;
+            txtLastName.Text = AnCustomer.LastName;
+            txtEmail.Text = AnCustomer.Email;
+            txtSubscriptionPlan.Text = AnCustomer.SubscriptionPlan;
+            txtAge.Text = AnCustomer.Age.ToString();
+            ChkSubscriptionStatus.Checked = AnCustomer.SubscriptionStatus;
+        }
+    }
 }

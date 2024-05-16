@@ -28,8 +28,9 @@
         <asp:Label ID="lblAge" runat="server" style="z-index: 1; left: 38px; top: 333px; position: absolute" Text="Age" width="162px"></asp:Label>
         <asp:CheckBox ID="ChkSubscriptionStatus" runat="server" style="z-index: 1; left: 150px; top: 392px; position: absolute; height: 46px; width: 207px" Text="SubscriptionStatus" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 37px; top: 436px; position: absolute"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" OnClick="BtnOK_Click" style="z-index: 1; left: 49px; top: 487px; position: absolute; width: 51px; " Text="OK" BackColor="#99CCFF" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 120px; top: 485px; position: absolute" Text="Cancel" BackColor="#FFCCCC" />
+        <asp:Button ID="btnOK" runat="server" OnClick="BtnOK_Click" style="z-index: 1; left: 49px; top: 487px; position: absolute; width: 51px; right: 1385px;" Text="OK" BackColor="#99CCFF" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 120px; top: 487px; position: absolute" Text="Cancel" BackColor="#FFCCCC" />
+        <asp:Button ID="BtnFind" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 199px; top: 487px; position: absolute; height: 22px; width: 44px;" Text="Find" BackColor="#CCFF66" />
     </form>
 </body>
 </html>
