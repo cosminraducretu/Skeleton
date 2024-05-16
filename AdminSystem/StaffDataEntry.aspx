@@ -60,15 +60,25 @@
             top: 269px;
             position: absolute;
             width: 71px;
-            right: 1259px;
-        }
+            }
         .auto-style13 {
             z-index: 1;
             left: 242px;
             top: 269px;
             position: absolute;
+            width: 65px;
         }
-    </style>
+        .auto-style14 {
+            z-index: 1;
+            left: 131px;
+            top: 269px;
+            position: absolute;
+        }
+        #form2 {
+            height: 229px;
+            width: 1298px;
+        }
+        </style>
 </head>
 <body style="height: 367px; width: 1310px; margin-bottom: 0px">
     <form id="form1" runat="server">
@@ -93,9 +103,34 @@
         </p>
         <asp:Label ID="lblError" runat="server" CssClass="auto-style10"></asp:Label>
         <p>
-            <asp:Button ID="btnOK" runat="server" CssClass="auto-style12" height="29px" OnClick="btnOK_Click" Text="OK" width="77px" TabIndex="6" />
+            <asp:Button ID="btnOK" runat="server" CssClass="auto-style12" height="29px" OnClick="btnOK_Click" Text="OK" width="68px" TabIndex="6" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style13" Text="Cancel" height="29px" TabIndex="7" width="77px" />
+        <asp:Button ID="btnCancel" runat="server" CssClass="auto-style13" Text="Cancel" height="29px" TabIndex="9" />
+        <div>
+            <h2>
+            <asp:TextBox ID="txtFirstName0" runat="server" CssClass="auto-style3" height="22px" width="168px" TabIndex="2"></asp:TextBox>
+            </h2>
+        </div>
+        <asp:Label ID="lblStaffID0" runat="server" height="22px" style="z-index: 1; left: 11px; top: 11px; position: absolute" Text="Staff ID" width="116px"></asp:Label>
+        <asp:Label ID="lblLastName0" runat="server" style="z-index: 1; left: 11px; top: 79px; position: absolute" Text="Last Name" width="116px"></asp:Label>
+        <p>
+            <asp:Label ID="lblFirstName0" runat="server" height="22px" style="z-index: 1; left: 11px; top: 49px; position: absolute" Text="First Name" width="116px"></asp:Label>
+            <asp:Label ID="lblSalary0" runat="server" height="22px" style="z-index: 1; left: 11px; top: 151px; position: absolute" Text="Salary" width="116px"></asp:Label>
+            <asp:TextBox ID="txtStaffID0" runat="server" CssClass="auto-style4" height="22px" width="168px" TabIndex="1"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Label ID="lblDepartment0" runat="server" style="z-index: 1; left: 11px; top: 118px; position: absolute; height: 22px" Text="Department" width="116px"></asp:Label>
+            <asp:TextBox ID="txtLastName0" runat="server" CssClass="auto-style5" height="22px" width="168px" TabIndex="3"></asp:TextBox>
+            <asp:TextBox ID="txtDepartment0" runat="server" CssClass="auto-style6" height="22px" width="168px" TabIndex="4"></asp:TextBox>
+            <asp:TextBox ID="txtSalary0" runat="server" CssClass="auto-style7" height="22px" width="168px" TabIndex="5"></asp:TextBox>
+            <asp:CheckBox ID="chkActive0" runat="server" CssClass="auto-style9" Text="Availability" TabIndex="5" />
+        </p>
+        <asp:Label ID="lblError0" runat="server" CssClass="auto-style10"></asp:Label>
+        <p>
+            <asp:Button ID="btnOK0" runat="server" CssClass="auto-style12" height="29px" OnClick="btnOK_Click" Text="OK" width="68px" TabIndex="6" />
+        </p>
+        <asp:Button ID="btnCancel0" runat="server" CssClass="auto-style13" Text="Cancel" height="29px" TabIndex="8" width="68px" />
+        <asp:Button ID="btnFind" runat="server" CssClass="auto-style14" height="29px" OnClick="btnFind_Click" TabIndex="7" Text="Find" width="68px" />
     </form>
 </body>
 </html>
