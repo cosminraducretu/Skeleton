@@ -14,9 +14,12 @@ public partial class _1Viewer : System.Web.UI.Page
         clsStock AnIPTV = new clsStock();
         //Capture the Supplier name
         AnIPTV = (clsStock)Session["AnIPTV"];
-        //Store the IPTV in the session object
-        Session["AnIPTV"] = AnIPTV;
         //Display the supplier for this entry 
-        Response.Write(AnIPTV.Supplier);
+        Response.Write("StockID: " + AnIPTV.StockID + "<br/>");
+        Response.Write("Quantity: " + AnIPTV.Quantity + "<br/>");
+        Response.Write("Description: " + AnIPTV.Description + "<br/>");
+        Response.Write("Price: " + AnIPTV.Price + "<br/>");
+        Response.Write("Supplier: " + AnIPTV.Supplier + "<br/>");
+        Response.Write("Available: " + AnIPTV.Available + "<br/>");
     }
 }
