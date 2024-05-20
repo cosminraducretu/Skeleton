@@ -8,6 +8,7 @@ namespace Testing2
     public class tstCustomer {
         //giid test data to pass the methods
         //create some test data to pass the methods
+        string ID = "1";
         string FirstName = "Danny";
         string LastName = "Greenfield";
         string Email = "DannyGreenfield@gmail.com";
