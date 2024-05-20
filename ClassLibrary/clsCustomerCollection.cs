@@ -4,9 +4,15 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     { 
+        //private  data member of the list
+        List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private member data for this address
+        clsCustomer mThisCustomer = new clsCustomer();
+
         // constructor for the class
         public clsCustomerCollection()
         {
+
             //variable for the index
             Int32 Index = 0;
             //variable to store the record count
@@ -61,7 +67,29 @@ namespace ClassLibrary
             {
             }
         }
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+        clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FirstName", mThisCustomer.FirstName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@SubscriptionPlan", mThisCustomer.SubscriptionPlan);
+            DB.AddParameter("@Age", mThisCustomer.Age);
+            DB.AddParameter("@SubscriptionStatus", mThisCustomer.SubscriptionStatus);
+            return DB.Execute("sproc_tblCustomer_FilterByID");
+        }
     }
    
 
