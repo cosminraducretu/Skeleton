@@ -4,8 +4,7 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     { 
-        //private  data member of the list
-        List<clsCustomer> mCustomerList = new List<clsCustomer>();
+       
         //private member data for this address
         clsCustomer mThisCustomer = new clsCustomer();
 
