@@ -26,7 +26,7 @@ namespace ClassLibrary
                 //create an insance of the data connection
                 clsDataConnection DB = new clsDataConnection();
                 //add the parameter for the address id to search for 
-                DB.AddParameter("@ID", StaffID);
+                DB.AddParameter("@StaffID", StaffID);
                 //execute the stored procedure
                 DB.Execute("sproc_tblStaff_FilterByID");
                 //if one record is found (there should be either one or zero
