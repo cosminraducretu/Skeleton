@@ -20,9 +20,9 @@ public partial class _1Viewer : System.Web.UI.Page
                 // Display staff details
                 Response.Write("First Name: " + AStaff.FirstName + "<br/>");
                 Response.Write("Last Name: " + AStaff.LastName + "<br/>");
-                Response.Write("Salary: " + AStaff.Salary + "<br/>");
-                Response.Write("Department: " + AStaff.Department + "<br/>");
-                Response.Write("Availability: " + AStaff.Availability + "<br/>");
+                Response.Write("Age: " + AStaff.Age + "<br/>");
+                Response.Write("Department: " + AStaff.Address + "<br/>");
+                Response.Write("Availability: " + AStaff.Active + "<br/>");
             }
             else
             {

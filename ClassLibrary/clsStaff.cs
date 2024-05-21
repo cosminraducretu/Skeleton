@@ -8,18 +8,18 @@ namespace ClassLibrary
     {
 
         private int mStaffID;
-        private string mDepartment;
-        private int mSalary;
+        private string mAddress;
+        private int mAge;
         private string mFirstName;
         private string mLastName;
-        private bool mAvailability;
+        private bool mActive;
 
         public int StaffID { get { return mStaffID; } set { mStaffID = value; }  }
-        public string Department { get { return mDepartment; } set { mDepartment = value; } }
-        public int Salary { get { return mSalary; } set { mSalary = value; } }
+        public string Address { get { return mAddress; } set { mAddress = value; } }
+        public int Age { get { return mAge; } set { mAge = value; } }
         public string FirstName { get { return mFirstName; } set { mFirstName = value; } }
         public string LastName { get { return mLastName; } set { mLastName = value; } }
-        public bool Availability { get { return mAvailability; } set { mAvailability = value; } }
+        public bool Active { get { return mActive; } set { mActive = value; } }
 
         public bool Find(int StaffID)
             {
@@ -36,9 +36,9 @@ namespace ClassLibrary
                     mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
                     mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
                     mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
-                    mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
-                    mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
-                    mSalary = Convert.ToInt32(DB.DataTable.Rows[0]["Salary"]);
+                    mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                    mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                    mAge = Convert.ToInt32(DB.DataTable.Rows[0]["Age"]);
                     return true;
                 }
                 //if no record was found
@@ -50,12 +50,12 @@ namespace ClassLibrary
                 }
         }
 
-        public string Valid(string FirstName, string LastName, string Department, string Salary)
+        public string Valid(string FirstName, string LastName, string Address, string Age)
         {
             //create a string variable to store the error
             string Error = "";
-            int SSalary;
-            SSalary = Convert.ToInt32(Salary);
+            int Aage;
+            Aage = Convert.ToInt32(Age);
             //if the FirstName is blank
             if (FirstName.Length == 0)
             {
@@ -78,25 +78,25 @@ namespace ClassLibrary
             {
                 Error = Error + "The LastName must be less than 50 : ";
             }
-            //if the Department is blank
-            if (Department.Length == 0)
+            //if the Address is blank
+            if (Address.Length == 0)
             {
 
                 //record the error
-                Error = Error + "The department may not be blank : ";
+                Error = Error + "The Address may not be blank : ";
             }
-            if (Department.Length > 50)
+            if (Address.Length > 50)
             {
-                Error = Error + "The department must be less than 50 : ";
+                Error = Error + "The Address must be less than 50 : ";
             }
             // Check if salary is less than the minimum salary
-            if (SSalary < 18000)
+            if (Aage < 18)
             {
                 Error = Error + "The age must be 18000 or higher. ";
             }
 
             // Check if salary is greater than the maximum salary
-            if (SSalary > 75000)
+            if (Aage > 75)
             {
                 Error = Error + "The salary must be 75000 or lower. ";
             }
