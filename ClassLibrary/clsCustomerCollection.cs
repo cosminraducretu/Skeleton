@@ -87,7 +87,7 @@ namespace ClassLibrary
             DB.AddParameter("@SubscriptionPlan", mThisCustomer.SubscriptionPlan);
             DB.AddParameter("@Age", mThisCustomer.Age);
             DB.AddParameter("@SubscriptionStatus", mThisCustomer.SubscriptionStatus);
-            return DB.Execute("sproc_tblCustomer_FilterByID");
+            return DB.Execute("sproc_tblCustomer_Insert");
         }
     }
    
