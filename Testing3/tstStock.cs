@@ -1,12 +1,22 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
 
 namespace Testing3
 {
     [TestClass]
     public class tstStock
     {
+        //good test data
+        //create some test data to pass the method
+        String Description = "description";
+        String Available = "Available";
+        String Supplier = "Supplier";
+
+
         /******************INSTANCE OF THE CLASS TEST******************/
 
         [TestMethod]
@@ -242,5 +252,130 @@ namespace Testing3
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+
+        /******************Valid Method TEST******************/
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+
+
+
+
+
+        [TestMethod]
+        public void DescriptionMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = "a"; //this should be ok
+                                      //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = "aa"; //this should be ok
+                                       //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = "aaaaa"; //this should be ok
+                                          //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DescriptionMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = "aaaaaa"; //this should be ok
+                                           //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = "aaa"; //this should be ok
+                                        //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = ""; //this should be ok
+            Description = Description.PadRight(500, 'a');                           
+            //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DescriptionMaxPLusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Description = ""; //this should be ok
+            //invoke the method
+            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }
