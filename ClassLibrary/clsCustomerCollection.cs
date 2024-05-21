@@ -20,7 +20,7 @@ namespace ClassLibrary
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_FilterByID");
+            DB.Execute("sproc_tblCustomer_SelectAll");
             //get the count of records
             RecordCount = DB.Count;
             //while there are records to process
@@ -88,6 +88,19 @@ namespace ClassLibrary
             DB.AddParameter("@Age", mThisCustomer.Age);
             DB.AddParameter("@SubscriptionStatus", mThisCustomer.SubscriptionStatus);
             return DB.Execute("sproc_tblCustomer_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ID", mThisCustomer.ID);
+            DB.AddParameter("@FirstName", mThisCustomer.FirstName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@SubscriptionPlan", mThisCustomer.SubscriptionPlan);
+            DB.AddParameter("@Age", mThisCustomer.Age);
+            DB.AddParameter("@SubscriptionStatus", mThisCustomer.SubscriptionStatus);
+            DB.Execute("sproc_tblCustomer_Update");
         }
     }
    
