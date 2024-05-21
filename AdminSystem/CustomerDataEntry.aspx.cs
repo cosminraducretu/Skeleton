@@ -46,10 +46,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.SubscriptionPlan = SubscriptionPlan;
             //capture the Age
             AnCustomer.Age = Convert.ToInt32(Age);
-            //store in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //capture the subscriptionStatus
+            AnCustomer.SubscriptionStatus = ChkSubscriptionStatus.Checked;
+            //create a new instance of the address collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
