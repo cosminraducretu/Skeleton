@@ -10,8 +10,8 @@ namespace Testing1
         //create some test data to pass the methods
         string FirstName = "Cosmin-Radu";
         string LastName = "Cretu";
-        string Department = "StaffManSalaryr";
-        string Salary = "28000";
+        string Address = "Leicester";
+        string Age = "28";
 
 
         [TestMethod]
@@ -35,28 +35,28 @@ namespace Testing1
             Assert.AreEqual(AnId.StaffID, TestData);
         }
         [TestMethod]
-        public void DepartmentPropertyOK()
+        public void AddressPropertyOK()
         {
             //create an instance of the class we want to create
-            clsStaff ADepartment = new clsStaff();
+            clsStaff AAddress = new clsStaff();
             //create some test data to assign to the property
-            string TestData = "Some Department";
+            string TestData = "Some Address";
             //assign the data to the property
-            ADepartment.Department = TestData;
+            AAddress.Address = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(ADepartment.Department, TestData);
+            Assert.AreEqual(AAddress.Address, TestData);
         }
         [TestMethod]
-        public void SalaryPropertyOK()
+        public void AgePropertyOK()
         {
             //create an instance of the class we want to create
-            clsStaff Salary = new clsStaff();
+            clsStaff Age = new clsStaff();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            Salary.Salary = TestData;
+            Age.Age = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Salary.Salary, TestData);
+            Assert.AreEqual(Age.Age, TestData);
         }
 
         [TestMethod]
@@ -86,16 +86,16 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void AvailabilityPropertyOK()
+        public void ActivePropertyOK()
         {
             //create an instance of the class we want to create
-            clsStaff AnAvailability = new clsStaff();
+            clsStaff AnActive = new clsStaff();
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AnAvailability.Availability = TestData;
+            AnActive.Active = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAvailability.Availability, TestData);
+            Assert.AreEqual(AnActive.Active, TestData);
         }
 
         [TestMethod]
@@ -183,7 +183,7 @@ namespace Testing1
 
         [TestMethod]
 
-        public void TestDeparmentFound()
+        public void TestAddressFound()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
@@ -193,9 +193,9 @@ namespace Testing1
             Boolean OK = true;
             //create some test data to use with the method
             Int32 StaffID = 21;
-            //check the Department property
+            //check the Address property
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Department != "Test Department")
+            if (AnStaff.Address != "Test Address")
             {
                 OK = false;
             }
@@ -205,7 +205,7 @@ namespace Testing1
 
         [TestMethod]
 
-        public void TestSalaryFound()
+        public void TestAgeFound()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
@@ -217,8 +217,8 @@ namespace Testing1
             Int32 StaffID = 21;
             //invoke the method
             Found = AnStaff.Find(StaffID);
-            //check the Salary property
-            if (AnStaff.Salary != 1)
+            //check the Age property
+            if (AnStaff.Age != 1)
             {
                 OK = false;
             }
@@ -228,7 +228,7 @@ namespace Testing1
 
         [TestMethod]
 
-        public void TestAvailabilityFound()
+        public void TestActiveFound()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
@@ -241,7 +241,7 @@ namespace Testing1
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the Availability property
-            if (AnStaff.Availability != true)
+            if (AnStaff.Active != true)
             {
                 OK = false;
             }
@@ -252,12 +252,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
             string FirstName = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -266,12 +266,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -280,12 +280,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -294,13 +294,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "";
             FirstName = FirstName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -309,13 +309,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "";
             FirstName = FirstName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -325,13 +325,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
             string FirstName = "";
             FirstName = FirstName.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -340,13 +340,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "";
             FirstName = FirstName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -355,13 +355,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string FirstName = "";
             FirstName = FirstName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -369,12 +369,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
             string LastName = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -383,12 +383,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -397,12 +397,12 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -411,13 +411,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "";
             LastName = LastName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -426,13 +426,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "";
             LastName = LastName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -442,13 +442,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this shold fail
             string LastName = "";
             LastName = LastName.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -457,13 +457,13 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "";
             LastName = LastName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -472,262 +472,262 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
             string LastName = "";
             LastName = LastName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
-        public void DepartmentMinLessOne()
+        public void AddressMinLessOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
-            string Department = "";
+            string Address = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void DepartmentMin()
+        public void AddressMin()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            string Department = "a";
+            string Address = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
-        public void DepartmentMinPlusOne()
+        public void AddressMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            string Department = "aa";
+            string Address = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void DepartmentMaxLessOne()
+        public void AddressMaxLessOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            string Department = "";
-            Department = Department.PadRight(49, 'a');
+            string Address = "";
+            Address = Address.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void DepartmentMax()
+        public void AddressMax()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            string Department = "";
-            Department = Department.PadRight(50, 'a');
+            string Address = "";
+            Address = Address.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DepartmentMaxPlusOne()
+        public void AddressMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this shold fail
-            string Department = "";
-            Department = Department.PadRight(51, 'a');
+            string Address = "";
+            Address = Address.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void DepartmentMid()
+        public void AddressMid()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            string Department = "";
-            Department = Department.PadRight(25, 'a');
+            string Address = "";
+            Address = Address.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryExtremeMin()
+        public void AgeExtremeMin()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
-            //create a variable to store the test Salary data
-            int TestSalary;
-            //set the Salary to today's Salary
-            TestSalary = 0;
+            //create a variable to store the test Age data
+            int TestAge;
+            //set the Age to today's Age
+            TestAge = 0;
             //this should fail
-            string Salary = TestSalary.ToString();
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-        public void SalaryMinLessOne()
+        public void AgeMinLessOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
-            int TestSalary;
-            TestSalary = 17000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 17;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryMin()
+        public void AgeMin()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            int TestSalary;
-            TestSalary = 18000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 18;
+            string Age = TestAge.ToString();
             //invoke the method;
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
-        public void SalaryMinPlusOne()
+        public void AgeMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            int TestSalary;
-            TestSalary = 19000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 19;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryMaxLessOne()
+        public void AgeMaxLessOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            int TestSalary;
-            TestSalary = 74999;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 74;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryMax()
+        public void AgeMax()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            int TestSalary;
-            TestSalary = 75000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 75;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void SalaryMaxPlusOne()
+        public void AgeMaxPlusOne()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should fail
-            int TestSalary;
-            TestSalary = 75001;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 76;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryMid()
+        public void AgeMid()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should pass
-            int TestSalary;
-            TestSalary = 35000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 35;
+            string Age = TestAge.ToString();
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void SalaryExtremeMax()
+        public void AgeExtremeMax()
         {
             //create an instance of the class we want to create
             clsStaff AnStaff = new clsStaff();
-            //string variable to store any error messSalary
+            //string variable to store any error messAge
             String Error = "";
             //this should Fail
-            int TestSalary;
-            TestSalary = 500000;
-            string Salary = TestSalary.ToString();
+            int TestAge;
+            TestAge = 50;
+            string Age = TestAge.ToString();
             //invoke the method.
-            Error = AnStaff.Valid(FirstName, LastName, Department, Salary);
+            Error = AnStaff.Valid(FirstName, LastName, Address, Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
