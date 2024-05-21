@@ -805,7 +805,7 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
+        [TestMethod]
         public void AgeMinPlusOne()
         {
             //create an instance of the class we want to create
