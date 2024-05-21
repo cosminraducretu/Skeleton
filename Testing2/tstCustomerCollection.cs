@@ -76,25 +76,53 @@ namespace Testing2
         [TestMethod]
         public void AddMethodOk()
         {
-           clsCustomerCollection AllCustomer = new clsCustomerCollection();
-           clsCustomer TestItem = new clsCustomer();
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
             Int32 PrimaryKey = 0;
-            TestItem.ID = 1;
             TestItem.FirstName = "Danny";
-           TestItem.LastName = "Greenfield";
-           TestItem.Email = "DannyGreenfield@gmail.com";
+            TestItem.LastName = "Greenfield";
+            TestItem.Email = "DannyGreenfield@gmail.com";
             TestItem.SubscriptionPlan = "Standard";
             TestItem.Age = 53;
-           //set ThisCustomer to the test data
+            TestItem.SubscriptionStatus = true;           //set ThisCustomer to the test data
             AllCustomer.ThisCustomer = TestItem;
             //add the record 
             PrimaryKey = AllCustomer.Add();
             //set the primary key of the test data
             TestItem.ID = PrimaryKey;
             //find the record
-          AllCustomer.ThisCustomer.Find(PrimaryKey);
-          //test to see that the two values are the same
-           Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
+
+
         }
-    } 
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.FirstName = "Danny";
+            TestItem.LastName = "Greenfield";
+            TestItem.Email = "DannyGreenfield@gmail.com";
+            TestItem.SubscriptionPlan = "Standard";
+            TestItem.Age = 53;
+            TestItem.SubscriptionStatus = true;
+            AllCustomer.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomer.Add();
+            TestItem.ID = PrimaryKey;
+            //modify the test record
+            TestItem.FirstName = "Lisa";
+            TestItem.LastName = "More";
+            TestItem.Email = "Lisa@gmail.com";
+            TestItem.SubscriptionPlan = "Free";
+            TestItem.Age = 34;
+            TestItem.SubscriptionStatus = false;
+            AllCustomer.ThisCustomer = TestItem;
+            AllCustomer.Update();
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
+        }
+    }
 }
