@@ -75,8 +75,8 @@ namespace ClassLibrary
                 AnStaff.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
                 AnStaff.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
                 AnStaff.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                AnStaff.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
                 AnStaff.Age = Convert.ToInt32(DB.DataTable.Rows[Index]["Age"]);
+                AnStaff.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
                 //add the record to the private data member
                 mStaffList.Add(AnStaff);
                 //point at the next record
@@ -85,34 +85,38 @@ namespace ClassLibrary
             }
         }
 
-        //public int Add()
-        //{
-        //    //add a record to the database based on the values of mThisStaff
-        //    //connect to the database
-        //    clsStaffCollection DB = new clsStaffCollection();
-        //    //set the parameters for the stored procedure
-        //    DB.AddParameter("@StaffID", mThisStaff.StaffID);
-        //    DB.AddParameter("@FirstName", mThisStaff.FirstName);
-        //    DB.AddParameter("@LastName", mThisStaff.LastName);
-        //    DB.AddParameter("@Address", mThisStaff.Address);
-        //    DB.AddParameter("@Age", mThisStaff.Age);
-        //    DB.AddParameter("@Active", mThisStaff.Active);
-        //}
+        public int Add()
+        {
+            //add a record to the database based on the values of mThisStaff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@Address", mThisStaff.Address);
+            DB.AddParameter("@Age", mThisStaff.Age);
+            DB.AddParameter("@Active", mThisStaff.Active);
+            //execute the query and return the new record's ID
+            int newStaffID = DB.Execute("sproc_tblStaff_Insert");
+            return newStaffID;
 
-        //public void Update()
-        //{
-        //    //add a record to the database based on the values of mThisStaff
-        //    //    //connect to the database
-        //    clsDataConnection DB = new clsDataConnection();
-        //    //set the parameters for the stored procedure
-        //    DB.AddParameter("@StaffID", mThisStaff.StaffID);
-        //    DB.AddParameter("@FirstName", mThisStaff.FirstName);
-        //    DB.AddParameter("@LastName", mThisStaff.LastName);
-        //    DB.AddParameter("@Address", mThisStaff.Address);
-        //    DB.AddParameter("@Age", mThisStaff.Age);
-        //    DB.AddParameter("@SubscriptionStatus", mThisStaff.Active);
-        //    DB.Execute("sproc_tblStaff_Update");
-        //}
+        }
+
+        public void Update()
+        {
+            //add a record to the database based on the values of mThisStaff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@Address", mThisStaff.Address);
+            DB.AddParameter("@Age", mThisStaff.Age);
+            DB.AddParameter("@SubscriptionStatus", mThisStaff.Active);
+            DB.Execute("sproc_tblStaff_Update");
+        }
 
     }
 

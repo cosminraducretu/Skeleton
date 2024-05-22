@@ -115,6 +115,57 @@ namespace Testing1
             //test to see that the two values are the same 
             Assert.AreEqual(AllStaff.ThisStaff,TestItem);
         }
+
+
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.FirstName = "Cosmin";
+            TestItem.LastName = "Cretu";
+            TestItem.Address = "DannyGreenfield@gmail.com";
+            TestItem.Age = 29;
+            TestItem.Active = true;           
+            //set ThisStaff to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record 
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.ID = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+
+        }
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            clsStaffCollection AllStaff= new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.FirstName = "Cosmin";
+            TestItem.LastName = "Cretu";
+            TestItem.Address = "Leicester";
+            TestItem.Age = 29;
+            TestItem.Active = true;
+            AllCustomer.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomer.Add();
+            TestItem.ID = PrimaryKey;
+            //modify the test record
+            TestItem.FirstName = "Mioara";
+            TestItem.LastName = "Luca";
+            TestItem.Address = "Rome";
+            TestItem.Age = 34;
+            TestItem.Active = false;
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
     }
 
 
