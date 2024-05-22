@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 namespace ClassLibrary
@@ -7,8 +8,7 @@ namespace ClassLibrary
     {
         //privare data member for the list 
         List<clsStaff> mStaffList = new List<clsStaff>();
-
-
+        //private member data for this address
         public clsStaff ThisStaff { get; set; }
 
 
@@ -45,31 +45,35 @@ namespace ClassLibrary
         public clsStaffCollection()
         {
 
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount = 0;
+            //object for the data connect
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_SelectAll");
+            //get the count of records
+            RecordCount = DB.Count;
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsStaff AnStaff = new clsStaff();
+                //read in the fields for the current record
+                AnStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
+                AnStaff.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
+                AnStaff.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
+                AnStaff.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                AnStaff.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                AnStaff.Age = Convert.ToInt32(DB.DataTable.Rows[Index]["Age"]);
+                //add the record to the private data member
+                mStaffList.Add(AnStaff);
+                //point at the next record
+                Index++;
 
-            //create  he items of test data 
-            clsStaff TestItem = new clsStaff();
-            //set its properties
-            TestItem.Active = true;
-            TestItem.StaffID = 1;
-            TestItem.FirstName = "Cosmin";
-            TestItem.LastName = "Cretu";
-            TestItem.Address = "Leicester";
-            //add the test item to the test list
-            mStaffList.Add(TestItem);
-            //re initialise the object for some new data
-            TestItem= new clsStaff();
-            //set its properties
-            TestItem.Active = true;
-            TestItem.StaffID = 2;
-            TestItem.FirstName = "Mioara";
-            TestItem.LastName = "Luca";
-            TestItem.Address = "Roma";
-            //add the item to the test list 
-            mStaffList.Add(TestItem);
+            }
         }
-
     }
-
-    
 
 }

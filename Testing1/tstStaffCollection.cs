@@ -44,19 +44,6 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void CountPropertyOK()
-        {
-            //create an instance of the class we want to create 
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            //create some test data to assign to the property
-            int SomeCount = 2;
-            //assign the data to the property
-            AllStaff.Count = SomeCount;
-            //test to see that two values are the same 
-            Assert.AreEqual(AllStaff.Count, SomeCount);
-        }
-
-        [TestMethod]
         public void ThisStaffPropertyOK()
         {
             //create an instance of the class we want to create
@@ -76,7 +63,7 @@ namespace Testing1
             Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
         }
         [TestMethod]
-        public void LIstAndCountOK()
+        public void ListAndCountOK()
         {
             //create an instance of the class we want to create
             clsStaffCollection AllStaff = new clsStaffCollection();
@@ -87,27 +74,18 @@ namespace Testing1
             //create the item of test data
             clsStaff TestItem = new clsStaff();
             //set its properties
-            TestItem.Active = true;
             TestItem.StaffID = 1;
             TestItem.FirstName = "Cosmin";
             TestItem.LastName = "Cretu";
             TestItem.Address = "Leicester";
             TestItem.Age = 29;
+            TestItem.Active = true;
+            //add the item to the test list 
+            TestList.Add(TestItem);
             //add the item to the test list
             AllStaff.StaffList = TestList;
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, TestList.Count);
-
         }
-
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            //create an instance of the class we want to create
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            //test to see that the two values are the same 
-            Assert.AreEqual(AllStaff.Count,2);
-        }
-
     }
 }
