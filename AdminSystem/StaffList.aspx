@@ -14,6 +14,12 @@
             height: 227px;
             width: 294px;
         }
+        .auto-style2 {
+            z-index: 1;
+            left: 432px;
+            top: 42px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -21,6 +27,7 @@
         <div>
         </div>
         <asp:ListBox ID="lstStaffList" runat="server" CssClass="auto-style1"></asp:ListBox>
+        <asp:Button ID="btnAdd" runat="server" CssClass="auto-style2" OnClick="btnAdd_Click" Text="Add" />
     </form>
 </body>
 </html>
