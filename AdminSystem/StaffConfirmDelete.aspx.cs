@@ -1,14 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ClassLibrary;
+using System;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
+    // Declare StaffID at the class level so it can be accessed by all methods
+    Int32 StaffID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            // Retrieve StaffID from the session and assign it to the class-level variable
+            StaffID = Convert.ToInt32(Session["StaffID"]);
+        }
+    }
 
+    protected void btnYes_Click(object sender, EventArgs e)
+    {
+        // Create a new instance of the clsStaffCollection class
+        clsStaffCollection StaffCollection = new clsStaffCollection();
+
+        // Find the record to delete
+        if (StaffCollection.ThisStaff.Find(StaffID))
+        {
+            // Delete the record
+            StaffCollection.Delete();
+        }
+
+        // Redirect back to the main page
+        Response.Redirect("StaffList.aspx");
+    }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        // Redirect back to the main page
+        Response.Redirect("StaffList.aspx");
     }
 }
