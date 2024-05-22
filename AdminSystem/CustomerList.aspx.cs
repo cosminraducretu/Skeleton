@@ -38,4 +38,20 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("CustomerDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 ID;
+        if(lstCustomerList.SelectedIndex != -1)
+        {
+            ID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["ID"] = ID;
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+
+        }
+    }
 }
