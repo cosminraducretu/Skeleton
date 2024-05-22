@@ -204,30 +204,30 @@ namespace Testing1
             //create an instance of the class we want to create
             clsStaffCollection AllStaff = new clsStaffCollection();
             //apply a address that doesn`t exist
-            FilteredStaff.ReportsByAddress("xxxxxxx");
+            AllStaff.ReportByAddress("xxxxxxx");
             //test to see  that there are no records
-            Assert.AreEqual(0,FilteredStafff.Count);
+            Assert.AreEqual(0,AllStaff.Count);
         }
 
         [TestMethod]
         public void ReportByAddressTestDataFound()
         {
             //create an instance of the class we want to create
-            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            clsStaffCollection AllStaff = new clsStaffCollection();
             //Variable to store the outcome
             Boolean OK = true;
             //apply the address that doesn`t exit
-            AllStaff.ReportsByAddress("xxxxx");
+            AllStaff.ReportByAddress("xxxxx");
             //check that the correct number of records are found 
-            if (FilteredStaff.Count == 2)
+            if (AllStaff.Count == 2)
             {
                 //check to see that the first record is 25
-                if (FilteredStaff.StaffList[0].StaffID != 25)
+                if (AllStaff.StaffList[0].StaffID != 25)
                 {
                     OK = false;
                 }
                 // check to see that the first record is 26
-                if (FilteredStaff.StaffList[1].StaffID != 26)
+                if (AllStaff.StaffList[1].StaffID != 26)
                 {
                     OK = false;
                 }
