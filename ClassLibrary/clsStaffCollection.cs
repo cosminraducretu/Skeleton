@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+
 
 
 namespace ClassLibrary
@@ -85,19 +85,35 @@ namespace ClassLibrary
             }
         }
 
-    //    public int Add()
-    //    {
-    //        ////add a record to the database based on the values of mThisStaff
-    //        ////connect to the database
-    //        //clsStaffCollection DB = new clsStaffCollection();
-    //        ////set the parameters for the stored procedure
-    //        //DB.AddParameter("@StaffID", mThisStaff.StaffID);
-    //        //DB.AddParameter("@FirstName", mThisStaff.FirstName);
-    //        //DB.AddParameter("@LastName", mThisStaff.LastName);
-    //        //DB.AddParameter("@Address", mThisStaff.Address);
-    //        //DB.AddParameter("@Active", mThisStaff.Active);
-    //
-    //    }
+        //public int Add()
+        //{
+        //    //add a record to the database based on the values of mThisStaff
+        //    //connect to the database
+        //    clsStaffCollection DB = new clsStaffCollection();
+        //    //set the parameters for the stored procedure
+        //    DB.AddParameter("@StaffID", mThisStaff.StaffID);
+        //    DB.AddParameter("@FirstName", mThisStaff.FirstName);
+        //    DB.AddParameter("@LastName", mThisStaff.LastName);
+        //    DB.AddParameter("@Address", mThisStaff.Address);
+        //    DB.AddParameter("@Age", mThisStaff.Age);
+        //    DB.AddParameter("@Active", mThisStaff.Active);
+        //}
+
+        //public void Update()
+        //{
+        //    //add a record to the database based on the values of mThisStaff
+        //    //    //connect to the database
+        //    clsDataConnection DB = new clsDataConnection();
+        //    //set the parameters for the stored procedure
+        //    DB.AddParameter("@StaffID", mThisStaff.StaffID);
+        //    DB.AddParameter("@FirstName", mThisStaff.FirstName);
+        //    DB.AddParameter("@LastName", mThisStaff.LastName);
+        //    DB.AddParameter("@Address", mThisStaff.Address);
+        //    DB.AddParameter("@Age", mThisStaff.Age);
+        //    DB.AddParameter("@SubscriptionStatus", mThisStaff.Active);
+        //    DB.Execute("sproc_tblStaff_Update");
+        //}
+
     }
 
 }
