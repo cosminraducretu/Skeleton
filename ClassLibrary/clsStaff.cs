@@ -15,10 +15,10 @@ namespace ClassLibrary
         private bool mActive;
 
         public int StaffID { get { return mStaffID; } set { mStaffID = value; }  }
-        public string Address { get { return mAddress; } set { mAddress = value; } }
-        public int Age { get { return mAge; } set { mAge = value; } }
         public string FirstName { get { return mFirstName; } set { mFirstName = value; } }
         public string LastName { get { return mLastName; } set { mLastName = value; } }
+        public string Address { get { return mAddress; } set { mAddress = value; } }
+        public int Age { get { return mAge; } set { mAge = value; } }
         public bool Active { get { return mActive; } set { mActive = value; } }
 
         public bool Find(int StaffID)

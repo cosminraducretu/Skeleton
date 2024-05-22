@@ -18,6 +18,7 @@ public partial class _1Viewer : System.Web.UI.Page
             if (AStaff != null)
             {
                 // Display staff details
+                Response.Write("StaffID:  " + AStaff.StaffID + "<br/>");
                 Response.Write("First Name: " + AStaff.FirstName + "<br/>");
                 Response.Write("Last Name: " + AStaff.LastName + "<br/>");
                 Response.Write("Age: " + AStaff.Age + "<br/>");
