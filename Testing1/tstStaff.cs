@@ -8,7 +8,7 @@ namespace Testing1
     public class tstStaff
     {
         //create some test data to pass the methods
-        string StaffID = "2"; 
+        
         string FirstName = "Cosmin-Radu";
         string LastName = "Cretu";
         string Address = "Leicester";
@@ -223,7 +223,7 @@ namespace Testing1
             //this should fail
             string FirstName = "";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -237,7 +237,7 @@ namespace Testing1
             //this should pass
             string FirstName = "a";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -251,7 +251,7 @@ namespace Testing1
             //this should pass
             string FirstName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -266,7 +266,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -281,7 +281,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -297,7 +297,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(51, 'a');
             //invoke the method
-            Error = AStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -312,7 +312,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -327,7 +327,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -340,7 +340,7 @@ namespace Testing1
             //this should fail
             string LastName = "";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -354,7 +354,7 @@ namespace Testing1
             //this should pass
             string LastName = "a";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -368,7 +368,7 @@ namespace Testing1
             //this should pass
             string LastName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -383,7 +383,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -398,7 +398,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -414,7 +414,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -429,7 +429,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -444,7 +444,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -457,7 +457,7 @@ namespace Testing1
             //this should fail
             string Address = "";
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -471,7 +471,7 @@ namespace Testing1
             //this should pass
             string Address = "a";
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -484,7 +484,7 @@ namespace Testing1
             //this should pass
             string Address = "aa";
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -499,7 +499,7 @@ namespace Testing1
             string Address = "";
             Address = Address.PadRight(49, 'a');
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -514,7 +514,7 @@ namespace Testing1
             string Address = "";
             Address = Address.PadRight(50, 'a');
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -530,7 +530,7 @@ namespace Testing1
             string Address = "";
             Address = Address.PadRight(51, 'a');
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -545,7 +545,7 @@ namespace Testing1
             string Address = "";
             Address = Address.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+            Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -560,7 +560,7 @@ namespace Testing1
             string Address = "";
             Address = Address.PadRight(500, 'a');
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -577,7 +577,7 @@ namespace Testing1
             //this should fail
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -592,7 +592,7 @@ namespace Testing1
             TestAge = 17;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -608,7 +608,7 @@ namespace Testing1
             TestAge = 18;
             string Age = TestAge.ToString();
             //invoke the method;
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -624,7 +624,7 @@ namespace Testing1
             TestAge = 19;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -640,7 +640,7 @@ namespace Testing1
             TestAge = 74;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -656,7 +656,7 @@ namespace Testing1
             TestAge = 75;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -673,7 +673,7 @@ namespace Testing1
             TestAge = 76;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -689,7 +689,7 @@ namespace Testing1
             TestAge = 38;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -705,7 +705,7 @@ namespace Testing1
             TestAge = 500;
             string Age = TestAge.ToString();
             //invoke the method
-             Error = AnStaff.Valid(StaffID,FirstName,LastName,Address,Age);
+             Error = AnStaff.Valid(FirstName,LastName,Address,Age);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
