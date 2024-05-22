@@ -51,7 +51,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             clsStaffCollection StaffList = new clsStaffCollection();
             //set the ThisStaff property
             StaffList.ThisStaff = AStaff;
-           // StaffList.Add();
+            StaffList.Add();
             //navigate to the view page 
             Response.Redirect("StaffList.aspx");
         }    

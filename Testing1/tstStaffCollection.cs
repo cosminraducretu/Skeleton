@@ -92,7 +92,7 @@ namespace Testing1
         public void AddMethodOK()
         {
             //create an instance of the class we want to create
-            tstStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection AllStaff = new clsStaffCollection();
             //create some test data to assign to the property
             clsStaff TestItem = new clsStaff();
             //variable to store the primary key
@@ -102,7 +102,7 @@ namespace Testing1
             TestItem.FirstName = "Cosmin";
             TestItem.LastName = "Cretu";
             TestItem.Address = "Leicester";
-            TestItem.Age = 29;
+            TestItem.Age = 21;
             TestItem.Active = true;
             //set ThisStaff to the test data
             AllStaff.ThisStaff = TestItem;
@@ -116,56 +116,43 @@ namespace Testing1
             Assert.AreEqual(AllStaff.ThisStaff,TestItem);
         }
 
-
-        [TestMethod]
-        public void AddMethodOk()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            clsStaff TestItem = new clsStaff();
-            Int32 PrimaryKey = 0;
-            TestItem.FirstName = "Cosmin";
-            TestItem.LastName = "Cretu";
-            TestItem.Address = "DannyGreenfield@gmail.com";
-            TestItem.Age = 29;
-            TestItem.Active = true;           
-            //set ThisStaff to the test data
-            AllStaff.ThisStaff = TestItem;
-            //add the record 
-            PrimaryKey = AllStaff.Add();
-            //set the primary key of the test data
-            TestItem.ID = PrimaryKey;
-            //find the record
-            AllStaff.ThisStaff.Find(PrimaryKey);
-            //test to see that the two values are the same
-            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
-
-
-        }
         [TestMethod]
         public void UpdateMethodOk()
         {
-            clsStaffCollection AllStaff= new clsStaffCollection();
+            clsStaffCollection AllStaff = new clsStaffCollection();
             clsStaff TestItem = new clsStaff();
-            Int32 PrimaryKey = 0;
+
+            Int32 PrimaryKey = 1;
             TestItem.FirstName = "Cosmin";
             TestItem.LastName = "Cretu";
             TestItem.Address = "Leicester";
             TestItem.Age = 29;
             TestItem.Active = true;
-            AllCustomer.ThisCustomer = TestItem;
-            PrimaryKey = AllCustomer.Add();
-            TestItem.ID = PrimaryKey;
-            //modify the test record
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.StaffID = PrimaryKey;
+
+            // Modify the test record
             TestItem.FirstName = "Mioara";
             TestItem.LastName = "Luca";
             TestItem.Address = "Rome";
             TestItem.Age = 34;
-            TestItem.Active = false;
+            TestItem.Active = false; // Ensure this line sets the Active property
             AllStaff.ThisStaff = TestItem;
             AllStaff.Update();
+
+            // Find the updated record
             AllStaff.ThisStaff.Find(PrimaryKey);
-            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+            // Assert equality of the updated record
+            Assert.AreEqual(AllStaff.ThisStaff.FirstName, TestItem.FirstName);
+            Assert.AreEqual(AllStaff.ThisStaff.LastName, TestItem.LastName);
+            Assert.AreEqual(AllStaff.ThisStaff.Address, TestItem.Address);
+            Assert.AreEqual(AllStaff.ThisStaff.Age, TestItem.Age);
+            Assert.AreEqual(AllStaff.ThisStaff.Active, TestItem.Active);
         }
+
+
     }
 
 

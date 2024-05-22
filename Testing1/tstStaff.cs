@@ -161,7 +161,7 @@ namespace Testing1
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 3;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the LastName property
@@ -182,7 +182,7 @@ namespace Testing1
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 3;
+            Int32 StaffID = 1;
             //check the Address property
             Found = AnStaff.Find(StaffID);
             if (AnStaff.Address != "Leicester")
@@ -202,11 +202,11 @@ namespace Testing1
             //create Boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 3;
+            Int32 StaffID = 1;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the Age property
-            if (AnStaff.Age != 20)
+            if (AnStaff.Age != 29)
             {
                 OK = false;
             }
