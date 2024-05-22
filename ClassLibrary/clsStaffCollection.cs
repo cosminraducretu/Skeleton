@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 
 namespace ClassLibrary
@@ -9,10 +10,19 @@ namespace ClassLibrary
         //privare data member for the list 
         List<clsStaff> mStaffList = new List<clsStaff>();
         //private member data for this address
-        public clsStaff ThisStaff { get; set; }
-
-
-
+        clsStaff mThisStaff = new clsStaff();
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+         
         //public property for the staff list 
         public List<clsStaff> StaffList
         {
@@ -74,6 +84,20 @@ namespace ClassLibrary
 
             }
         }
+
+    //    public int Add()
+    //    {
+    //        ////add a record to the database based on the values of mThisStaff
+    //        ////connect to the database
+    //        //clsStaffCollection DB = new clsStaffCollection();
+    //        ////set the parameters for the stored procedure
+    //        //DB.AddParameter("@StaffID", mThisStaff.StaffID);
+    //        //DB.AddParameter("@FirstName", mThisStaff.FirstName);
+    //        //DB.AddParameter("@LastName", mThisStaff.LastName);
+    //        //DB.AddParameter("@Address", mThisStaff.Address);
+    //        //DB.AddParameter("@Active", mThisStaff.Active);
+    //
+    //    }
     }
 
 }

@@ -33,19 +33,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
        
         if(Error ==  "")
         {
-            //capture the inputs
+            //capture the StaffID
             AStaff.StaffID = Convert.ToInt32(txtStaffID.Text);
+            //capture the FirstName
             AStaff.FirstName = txtFirstName.Text;
+            //capture the LastName
             AStaff.LastName = txtLastName.Text;
+            //capture the Address
             AStaff.Address = txtAddress.Text;
+            //capture the Age
             AStaff.Age = Convert.ToInt32(txtAge.Text);
+            //capture the Active
             AStaff.Active = chkActive0.Checked;
 
 
-            //display the Firstname for this entry;
-            Session["AStaff"] = AStaff;
+            //create a new instance of the address collection 
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaff property
+            StaffList.ThisStaff = AStaff;
+            StaffList.Add();
             //navigate to the view page 
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffList.aspx");
         }    
         else
         {
