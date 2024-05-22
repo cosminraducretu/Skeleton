@@ -115,7 +115,7 @@
             <asp:TextBox ID="txtStaffID" runat="server" CssClass="auto-style4" height="22px" width="168px" TabIndex="1"></asp:TextBox>
         </p>
         <p>
-            <asp:CheckBox ID="chkActive0" runat="server" CssClass="auto-style9" Text="Active" TabIndex="5" />
+            <asp:CheckBox ID="chkActive" runat="server" CssClass="auto-style9" Text="Active" TabIndex="5" />
         </p>
         <asp:Label ID="lblError0" runat="server" CssClass="auto-style10"></asp:Label>
         <p>

@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
 {
+     
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
@@ -39,5 +40,58 @@ public partial class _1_List : System.Web.UI.Page
         Session["StaffID"] = -1;
         //redirect to the data entry page 
         Response.Redirect("StaffDataEntry.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 StaffID;
+
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the sessions object
+            Session["StaffID"]=StaffID;
+            //redirect to the delete page
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else // if no record has been seleted 
+        {
+            //display and error message
+            lblError.Text = "Please select a record from the list to delete"; 
+
+        }
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        int StaffId;
+        //if a record has been seleted from the list
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
+            //store the data in the session object
+            Session["StaffID"] = StaffId;
+            //redirect to the edit page
+            Response.Redirect("StaffDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+
+    }
+
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+
     }
 }

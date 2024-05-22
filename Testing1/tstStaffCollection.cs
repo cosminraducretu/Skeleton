@@ -151,7 +151,94 @@ namespace Testing1
             Assert.AreEqual(AllStaff.ThisStaff.Age, TestItem.Age);
             Assert.AreEqual(AllStaff.ThisStaff.Active, TestItem.Active);
         }
+        [TestMethod]
 
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create some test data to assign to the property
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffID = 1;
+            TestItem.FirstName = "Cosmin";
+            TestItem.LastName = "Cretu";
+            TestItem.Address = "Leicester";
+            TestItem.Age = 21;
+            TestItem.Active = true;
+            //set ThisStaff to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data 
+            TestItem.StaffID = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaff.Delete();
+            //now find the record 
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
+        [TestMethod]
+        public void ReportByAddressMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply a blank string (should return all records)
+            FilteredStaff.ReportByAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.Count,FilteredStaff.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByAddressNotFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //apply a address that doesn`t exist
+            FilteredStaff.ReportsByAddress("xxxxxxx");
+            //test to see  that there are no records
+            Assert.AreEqual(0,FilteredStafff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByAddressTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //Variable to store the outcome
+            Boolean OK = true;
+            //apply the address that doesn`t exit
+            AllStaff.ReportsByAddress("xxxxx");
+            //check that the correct number of records are found 
+            if (FilteredStaff.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredStaff.StaffList[0].StaffID != 25)
+                {
+                    OK = false;
+                }
+                // check to see that the first record is 26
+                if (FilteredStaff.StaffList[1].StaffID != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            { 
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK); 
+        }
 
     }
 

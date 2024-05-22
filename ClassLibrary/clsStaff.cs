@@ -50,33 +50,15 @@ namespace ClassLibrary
                 }
         }
 
-        public string Valid(string StaffID ,string FirstName, string LastName, string Address, string Age)
+        public string Valid(string FirstName, string LastName, string Address, string Age)
         {
             //create a string variable to store the error
             string Error = "";
             int aAge;
-            int staffID;
+            
 
             // Validate StaffID input to ensure it's an integer and greater than 0
-            if (string.IsNullOrWhiteSpace(StaffID))
-            {
-                Error += "The StaffID may not be blank.<br/>";
-            }
-            else
-            {
-                try
-                {
-                    staffID = Convert.ToInt32(StaffID);
-                    if (staffID <= 0)
-                    {
-                        Error += "The StaffID must be a valid integer greater than 0.<br/>";
-                    }
-                }
-                catch
-                {
-                    Error += "The StaffID must be a valid integer.<br/>";
-                }
-            }
+            
             //if the FirstName is blank
             if (FirstName.Length == 0)
             {
