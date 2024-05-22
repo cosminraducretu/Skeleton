@@ -91,15 +91,14 @@ namespace ClassLibrary
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@StaffID", mThisStaff.StaffID);
             DB.AddParameter("@FirstName", mThisStaff.FirstName);
             DB.AddParameter("@LastName", mThisStaff.LastName);
             DB.AddParameter("@Address", mThisStaff.Address);
             DB.AddParameter("@Age", mThisStaff.Age);
             DB.AddParameter("@Active", mThisStaff.Active);
             //execute the query and return the new record's ID
-            int newStaffID = DB.Execute("sproc_tblStaff_Insert");
-            return newStaffID;
+            return DB.Execute("sproc_tblStaff_Insert");
+            
 
         }
 
@@ -114,7 +113,8 @@ namespace ClassLibrary
             DB.AddParameter("@LastName", mThisStaff.LastName);
             DB.AddParameter("@Address", mThisStaff.Address);
             DB.AddParameter("@Age", mThisStaff.Age);
-            DB.AddParameter("@SubscriptionStatus", mThisStaff.Active);
+            DB.AddParameter("@Active", mThisStaff.Active);
+            // execute the stored procedure
             DB.Execute("sproc_tblStaff_Update");
         }
 
