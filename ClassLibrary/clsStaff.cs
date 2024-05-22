@@ -50,56 +50,92 @@ namespace ClassLibrary
                 }
         }
 
-        public string Valid(string FirstName, string LastName, string Address, string Age)
+        public string Valid(string StaffID ,string FirstName, string LastName, string Address, string Age)
         {
             //create a string variable to store the error
             string Error = "";
-            int Aage;
-            Aage = Convert.ToInt32(Age);
+            int aAge;
+            int staffID;
+
+            // Validate StaffID input to ensure it's an integer and greater than 0
+            if (string.IsNullOrWhiteSpace(StaffID))
+            {
+                Error += "The StaffID may not be blank.<br/>";
+            }
+            else
+            {
+                try
+                {
+                    staffID = Convert.ToInt32(StaffID);
+                    if (staffID <= 0)
+                    {
+                        Error += "The StaffID must be a valid integer greater than 0.<br/>";
+                    }
+                }
+                catch
+                {
+                    Error += "The StaffID must be a valid integer.<br/>";
+                }
+            }
             //if the FirstName is blank
             if (FirstName.Length == 0)
             {
-
                 //record the error
-                Error = Error + "The FirstName may not be blank : ";
+                Error = Error + "The First name may not be blank.<br/>";
             }
             if (FirstName.Length > 50)
             {
-                Error = Error + "The FirstName must be less than 50 : ";
+                Error = Error + "The First name  must be less than 50.<br/>";
             }
             //if the LastName is blank
             if (LastName.Length == 0)
             {
-
                 //record the error
-                Error = Error + "The LastName may not be blank : ";
+                Error = Error + "The Last name may not be blank.<br/>";
             }
             if (LastName.Length > 50)
             {
-                Error = Error + "The LastName must be less than 50 : ";
+                Error = Error + "The Last name must be less than 50.<br/> ";
             }
-            //if the Address is blank
-            if (Address.Length == 0)
-            {
 
-                //record the error
-                Error = Error + "The Address may not be blank : ";
+            // If the Address is blank
+            if (string.IsNullOrWhiteSpace(Address))
+            {
+                // Record the error
+                Error += "The Address may not be blank.<br/>";
             }
             if (Address.Length > 50)
             {
-                Error = Error + "The Address must be less than 50 : ";
-            }
-            // Check if salary is less than the minimum salary
-            if (Aage < 18)
-            {
-                Error = Error + "The age must be 18000 or higher. ";
+                Error += "The Address must be less than 50 characters.<br/>";
             }
 
-            // Check if salary is greater than the maximum salary
-            if (Aage > 75)
+            // Validate Age input to ensure it's an integer
+            if (string.IsNullOrWhiteSpace(Age))
             {
-                Error = Error + "The salary must be 75000 or lower. ";
+                Error += "The Age may not be blank.<br/>";
             }
+            else
+            {
+                try
+                {
+                    aAge = Convert.ToInt32(Age);
+                    // Check if age is less than 18
+                    if (aAge < 18)
+                    {
+                        Error += "The Age must be 18 or higher.<br/>";
+                    }
+                    // Check if age is greater than 75
+                    if (aAge > 75)
+                    {
+                        Error += "The Age must be 75 or lower.<br/>";
+                    }
+                }
+                catch
+                {
+                    Error += "The Age must be a valid integer.<br/>";
+                }
+            }
+               
             //return any error messages
             return Error;
         }
