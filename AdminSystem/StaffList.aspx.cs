@@ -87,11 +87,34 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnFilter_Click(object sender, EventArgs e)
     {
-
+        //create an instance of the address object
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        //retrive the value of address from the presentation layer
+        AnStaff.ReportByAddress(txtFilterAddress.Text);
+        //set the data source to the list of addresses in the collection
+        lstStaffList.DataSource = AnStaff.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffID";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "Address";
+        //bind the data to the list
+        lstStaffList.DataBind();
     }
 
     protected void btnClearFilter_Click(object sender, EventArgs e)
     {
+        //create an instance of the address object
+        clsStaffCollection AnStaff = new clsStaffCollection();
+        //retrive the value of address from the presentation layer
+        AnStaff.ReportByAddress("");
+        //clear any exiting filter to dity up the interface
+        txtFilterAddress.Text = "";
+        //set the data source to the list of addresses in the collection
+        lstStaffList.DataValueField = "StaffID";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "Address";
+        //bind the data to the list
+        lstStaffList.DataBind();
 
     }
 }
