@@ -29,17 +29,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     void DisplayStaff()
     {
-        //create and instance of the Address collection
+        //create an instance of the Staff collection
         clsStaffCollection Staff = new clsStaffCollection();
         //find the record to update
-        Staff.ThisStaff.Find(StaffID);
-        //display the data for the record
-        txtStaffID.Text = Staff.ThisStaff.StaffID.ToString();
-        txtFirstName.Text = Staff.ThisStaff.FirstName.ToString();
-        txtLastName.Text = Staff.ThisStaff.LastName.ToString();
-        txtAddress.Text = Staff.ThisStaff.Address.ToString();
-        txtAge.Text = Staff.ThisStaff.Age.ToString();
-        chkActive.Checked =  Staff.ThisStaff.Active;
+        bool recordFound = Staff.ThisStaff.Find(StaffID);
+
+        if (recordFound)
+        {
+            //display the data for the record
+            txtStaff.Text = Staff.ThisStaff.StaffID.ToString();
+            txtFirstName.Text = Staff.ThisStaff.FirstName;
+            txtLastName.Text = Staff.ThisStaff.LastName;
+            txtAddress.Text = Staff.ThisStaff.Address;
+            txtAge.Text = Staff.ThisStaff.Age.ToString();
+            chkActive.Checked = Staff.ThisStaff.Active;
+        }
+        else
+        {
+            // Handle the case when the record is not found
+            Console.WriteLine( "Staff record not found.");
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -47,8 +56,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
 
-        
-        
+
         string FirstName = txtFirstName.Text;
         string LastName = txtLastName.Text;
         string Address = txtAddress.Text;
@@ -78,8 +86,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new instance of the address collection 
             clsStaffCollection StaffList = new clsStaffCollection();
             //set the ThisStaff property
-            StaffList.ThisStaff = AStaff;
-            StaffList.Add();
+            if (StaffID ==-1) {
+                StaffList.ThisStaff = AStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffID);
+                StaffList.ThisStaff= AStaff;
+                StaffList.Update();
+            }
             //navigate to the view page 
             Response.Redirect("StaffList.aspx");
         }    
@@ -99,7 +115,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        StaffID = Convert.ToInt32(txtStaffID.Text);
+        StaffID = Convert.ToInt32(txtStaff.Text);
         //find the record
         Found = AnStaff.Find(StaffID);
         //if found

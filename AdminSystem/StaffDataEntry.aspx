@@ -17,13 +17,6 @@
             position: absolute;
             width: 159px;
         }
-        .auto-style4 {
-            z-index: 1;
-            left: 143px;
-            top: 11px;
-            position: absolute;
-            bottom: 528px;
-        }
         .auto-style5 {
             z-index: 1;
             left: 143px;
@@ -112,7 +105,6 @@
         <asp:Label ID="lblLastName0" runat="server" style="z-index: 1; left: 11px; top: 79px; position: absolute" Text="Last Name" width="116px"></asp:Label>
         <p>
             <asp:Label ID="lblFirstName0" runat="server" height="22px" style="z-index: 1; left: 11px; top: 49px; position: absolute" Text="First Name" width="116px"></asp:Label>
-            <asp:TextBox ID="txtStaffID" runat="server" CssClass="auto-style4" height="22px" width="168px" TabIndex="1"></asp:TextBox>
         </p>
         <p>
             <asp:CheckBox ID="chkActive" runat="server" CssClass="auto-style9" Text="Active" TabIndex="5" />
@@ -123,6 +115,7 @@
         </p>
         <asp:Button ID="btnCancel0" runat="server" CssClass="auto-style13" Text="Cancel" height="29px" TabIndex="8" width="68px" />
         <asp:Button ID="btnFind" runat="server" CssClass="auto-style14" height="29px" OnClick="btnFind_Click" TabIndex="7" Text="Find" width="68px" />
+        <asp:TextBox ID="txtStaff" runat="server" height="22px" style="z-index: 1; left: 143px; top: 12px; position: absolute" width="168px"></asp:TextBox>
     </form>
 </body>
 </html>
