@@ -46,16 +46,31 @@ namespace Testing2
             Assert.AreEqual(AnUser.Department, TestData);
         }
         [TestMethod]
-        //public void FindUserMethodOK()
-        //{
-        //    clsCustomerUser AnUser = new clsCustomerUser();
-        //    Boolean Found = false;
-        //    string UserName = "Danny";
-        //    string Password = "Lebitcoinlasvegas44";
-        //    //invoke the method
-        //    Found = AnUser.FindUser(UserName, Password);
-        //    //test to see if the result is true
-        //    Assert.IsTrue(Found);
-        //}
+        public void FindUserMethodOK()
+        {
+            clsCustomerUser AnUser = new clsCustomerUser();
+            Boolean Found = false;
+            string UserName = "Danny";
+            string Password = "Lebitcoinlasvegas44";
+            //invoke the method
+            Found = AnUser.FindUser(UserName, Password);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestUserNamePWFound()
+        {
+            clsCustomerUser AnUser = new clsCustomerUser();
+            Boolean Found = false;
+            Boolean OK = true;
+            string UserName = "Danny";
+            string Password = "Lebitcoinlasvegas44";
+            Found = AnUser.FindUser(UserName, Password);
+            if (AnUser.UserName != UserName && AnUser.Password != Password)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
