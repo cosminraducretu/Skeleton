@@ -12,37 +12,12 @@ namespace ClassLibrary
         // constructor for the class
         public clsCustomerCollection()
         {
-
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsCustomer AnCustomer = new clsCustomer();
-                //read in the fields for the current record
-                AnCustomer.Age = Convert.ToInt32(DB.DataTable.Rows[Index]["Age"]);
-                AnCustomer.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["ID"]);
-                AnCustomer.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
-                AnCustomer.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
-                AnCustomer.SubscriptionPlan = Convert.ToString(DB.DataTable.Rows[Index]["SubscriptionPlan"]);
-                AnCustomer.SubscriptionStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["SubscriptionStatus"]);
-                //add the record to the private data member
-                mCustomerList.Add(AnCustomer);
-                //point at the next record
-                Index++;
-
-            }
+            PopulateArray(DB);
         }
-       
 
 
         public List<clsCustomer> CustomerList
@@ -90,6 +65,18 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblCustomer_Insert");
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("ID", mThisCustomer.ID);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        //public void ReportBySubscriptionPlan(string v)
+        //{
+
+        //}
+
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
@@ -101,6 +88,41 @@ namespace ClassLibrary
             DB.AddParameter("@Age", mThisCustomer.Age);
             DB.AddParameter("@SubscriptionStatus", mThisCustomer.SubscriptionStatus);
             DB.Execute("sproc_tblCustomer_Update");
+        }
+        public void ReportBySubscriptionPlan(string SubscriptionPlan)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SubscriptionPlan", SubscriptionPlan);
+            DB.Execute("sproc_tblCustomer_FilterBySubscriptionPlan");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mCustomerList = new List<clsCustomer>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                clsCustomer AnCustomer = new clsCustomer();
+                //read in the fields from the current record
+                AnCustomer.ID = Convert.ToInt32(DB.DataTable.Rows[Index]["ID"]);
+                AnCustomer.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
+                AnCustomer.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
+                AnCustomer.Email= Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                AnCustomer.SubscriptionPlan = Convert.ToString(DB.DataTable.Rows[Index]["SubscriptionPlan"]);
+                AnCustomer.Age = Convert.ToInt32(DB.DataTable.Rows[Index]["Age"]);
+                AnCustomer.SubscriptionStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["SubscriptionStatus"]);
+                mCustomerList.Add(AnCustomer);
+                //point at the next record
+                Index++;
+            }
         }
     }
    
