@@ -6,18 +6,29 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 ID;
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        ID = Convert.ToInt32(Session["ID"]);
+        if (IsPostBack == false)
+        {
+            if (ID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
     }
+    
     protected void BtnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clCustomer
         clsCustomer AnCustomer = new clsCustomer();
         //capture the ID
-        string ID = txtID.Text;
+        
         //capture the FirstName
         string FirstName = txtFirstName.Text;
         //capture the LastName
@@ -36,6 +47,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(FirstName, LastName, Email, SubscriptionPlan, Age);
         if (Error == "")
         {
+            //capture the ID
+            AnCustomer.ID = ID;
             //capture the FirstName
             AnCustomer.FirstName = FirstName;
             //capture the LastName
@@ -50,10 +63,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.SubscriptionStatus = ChkSubscriptionStatus.Checked;
             //create a new instance of the address collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = AnCustomer;
-            //add the new record
-            CustomerList.Add();
+            //if this is a new record i.e. ID = -1 then add the data
+            if (ID == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(ID);
+                CustomerList.ThisCustomer = AnCustomer;
+                CustomerList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("CustomerList.aspx");
         }
@@ -87,5 +110,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAge.Text = AnCustomer.Age.ToString();
             ChkSubscriptionStatus.Checked = AnCustomer.SubscriptionStatus;
         }
+
     }
+    void DisplayCustomer()
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ThisCustomer.Find(ID);
+        txtID.Text = Customer.ThisCustomer.ID.ToString();
+        txtFirstName.Text = Customer.ThisCustomer.FirstName.ToString();
+        txtLastName.Text = Customer.ThisCustomer.LastName.ToString();
+        txtEmail.Text = Customer.ThisCustomer.Email.ToString();
+        txtSubscriptionPlan.Text = Customer.ThisCustomer.SubscriptionPlan.ToString();
+        ChkSubscriptionStatus.Checked = Customer.ThisCustomer.SubscriptionStatus;
+        txtAge.Text = Customer.ThisCustomer.Age.ToString();
+    }
+
+
+
+
 }
+

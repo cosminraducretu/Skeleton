@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Testing2
 {
@@ -79,6 +80,7 @@ namespace Testing2
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
             Int32 PrimaryKey = 0;
+            TestItem.ID = 1;
             TestItem.FirstName = "Danny";
             TestItem.LastName = "Greenfield";
             TestItem.Email = "DannyGreenfield@gmail.com";
@@ -124,5 +126,78 @@ namespace Testing2
             AllCustomer.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomer.ThisCustomer, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.ID = 1;
+            TestItem.FirstName = "Danny";
+            TestItem.LastName = "Greenfield";
+            TestItem.Email = "DannyGreenfield@gmail.com";
+            TestItem.SubscriptionPlan = "Standard";
+            TestItem.Age = 53;
+            TestItem.SubscriptionStatus = true;
+            AllCustomer.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomer.Add();
+            TestItem.ID = PrimaryKey;
+            //find the record
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //delete the record
+            AllCustomer.Delete();
+            //now find the record
+            Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
+
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportBySubscriptionPlanMethodOk()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomerCollection FilterCustomer = new clsCustomerCollection();
+            //apply a blank string (should return all records);
+            FilterCustomer.ReportBySubscriptionPlan("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomer.Count, FilterCustomer.Count);
+        }
+        [TestMethod]
+        public void ReportBySubscriptionPlanNoneFound()
+        {
+            clsCustomerCollection FilterCustomer = new clsCustomerCollection();
+            //apply a Plan that does not exist
+            FilterCustomer.ReportBySubscriptionPlan("***");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilterCustomer.Count);
+        }
+        [TestMethod]
+        public void ReportBySubscriptionPlanTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomer.ReportBySubscriptionPlan("wwwww");
+            if (FilteredCustomer.Count == 2)
+            {
+                if (FilteredCustomer.CustomerList[0].ID != 25)
+                {
+                    OK = false;
+                }
+
+                if (FilteredCustomer.CustomerList[1].ID != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
     }
 }
+
+
+
