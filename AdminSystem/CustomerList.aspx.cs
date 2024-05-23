@@ -14,7 +14,12 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayCustomer();
         }
-       
+        //create a new instance of clsCustomerUser
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get data from the session object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
     void DisplayCustomer()
     {
@@ -121,5 +126,11 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataValueField = "ID";
         lstCustomerList.DataTextField = "SubscriptionPlan";
         lstCustomerList.DataBind();
+    }
+
+    protected void btnRTMM_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the customer login page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

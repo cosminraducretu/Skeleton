@@ -128,5 +128,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
+
+    protected void btnRTMM_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
 

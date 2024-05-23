@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            g
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 78px; top: 510px; position: absolute"></asp:Label>
             <asp:ListBox ID="lstCustomerList" runat="server" style="z-index: 1; left: 51px; top: 15px; position: absolute; height: 244px; width: 260px" OnSelectedIndexChanged="lstCustomerList_SelectedIndexChanged"></asp:ListBox>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 61px; top: 291px; position: absolute; height: 28px; width: 61px" Text="Add" />
