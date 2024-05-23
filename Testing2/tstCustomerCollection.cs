@@ -179,12 +179,12 @@ namespace Testing2
             FilteredCustomer.ReportBySubscriptionPlan("wwwww");
             if (FilteredCustomer.Count == 2)
             {
-                if (FilteredCustomer.CustomerList[0].ID != 25)
+                if (FilteredCustomer.CustomerList[0].ID != 80)
                 {
                     OK = false;
                 }
 
-                if (FilteredCustomer.CustomerList[1].ID != 26)
+                if (FilteredCustomer.CustomerList[1].ID != 82)
                 {
                     OK = false;
                 }
