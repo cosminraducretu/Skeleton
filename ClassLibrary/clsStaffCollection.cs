@@ -107,7 +107,7 @@ namespace ClassLibrary
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
             //execute the store procedure 
             DB.Execute("sproc_tblStaff_Delete");
         }
@@ -134,8 +134,9 @@ namespace ClassLibrary
             //variable to store the record count 
             Int32 RecordCount;
             //get tje cpimd pf records
-            RecordCount=DB.Count;
+            RecordCount= DB.Count;
             //clear the private record to process
+            mStaffList = new List<clsStaff>();
             while (index < RecordCount)
             {   
                 //create a blank address object

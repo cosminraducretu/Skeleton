@@ -109,6 +109,8 @@ public partial class _1_List : System.Web.UI.Page
         AnStaff.ReportByAddress("");
         //clear any exiting filter to dity up the interface
         txtFilterAddress.Text = "";
+        //data source 
+        lstStaffList.DataSource = AnStaff.StaffList;
         //set the data source to the list of addresses in the collection
         lstStaffList.DataValueField = "StaffID";
         //set the name of the field to display
