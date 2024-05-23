@@ -17,8 +17,8 @@
     <p>
         E</p>
         <asp:Button ID="btnDelete" runat="server" height="28px" OnClick="Button1_Click" style="z-index: 1; left: 250px; top: 292px; position: absolute; width: 71px" Text="Delete" />
-        <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 74px; top: 412px; position: absolute; height: 26px; width: 92px" Text="Apply Filter" />
-        <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 228px; top: 411px; position: absolute; height: 26px; width: 92px" Text="Clear Filter" />
+        <asp:Button ID="btnApplyFilter" runat="server" style="z-index: 1; left: 74px; top: 412px; position: absolute; height: 26px; width: 92px" Text="Apply Filter" OnClick="btnApplyFilter_Click1" />
+        <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 228px; top: 411px; position: absolute; height: 26px; width: 92px" Text="Clear Filter" OnClick="btnClearFilter_Click1" />
         <asp:Label ID="lblEnter" runat="server" style="z-index: 1; left: 51px; top: 365px; position: absolute" Text="Enter a SubscriptionPlan  :"></asp:Label>
         <asp:TextBox ID="txtEnter" runat="server" style="z-index: 1; left: 226px; top: 364px; position: absolute; width: 80px; right: 988px"></asp:TextBox>
     </form>

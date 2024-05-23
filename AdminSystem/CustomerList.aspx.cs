@@ -91,4 +91,35 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataTextField = "SubscriptionPlan";
         lstCustomerList.DataBind();
     }
+
+    protected void btnApplyFilter_Click1(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //retrieve the value of post code from the presentation layer
+        AnCustomer.ReportBySubscriptionPlan(txtEnter.Text);
+        //set the data source to the list of address in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the primary key
+        lstCustomerList.DataValueField= "ID";
+        //set the name of the field to display
+        lstCustomerList.DataTextField = "SubscriptionPlan";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClearFilter_Click1(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        //set any empty string
+        AnCustomer.ReportBySubscriptionPlan("");
+        //clear any existing filter to tidy up the interface
+        txtEnter.Text = "";
+        //set the data source to the list of address in the collection
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        //set the name of the field to display
+        lstCustomerList.DataValueField = "ID";
+        lstCustomerList.DataTextField = "SubscriptionPlan";
+        lstCustomerList.DataBind();
+    }
 }
