@@ -10,11 +10,15 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
-        //good test data
-        //create some test data to pass the method
-        String Description = "description";
-        String Available = "Available";
-        String Supplier = "Supplier";
+        // Test data
+        string description = "desc"; 
+        string available = "true"; 
+        string supplier = "Suplr";
+        string quantity = "10";
+        string price = "20";
+
+
+
 
 
         /******************INSTANCE OF THE CLASS TEST******************/
@@ -262,7 +266,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -272,9 +276,384 @@ namespace Testing3
 
 
 
+        /******************Quantity Validation TESTS******************/
+
+        [TestMethod]
+        public void QuantityMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string quantity = "";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void QuantityExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = ""; //this should fail
+            quantity = quantity.PadRight(500, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "500"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "499"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxPLusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "501"; //this should fail
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "250"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "1"; //this should pass
+                                   //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string quantity = "2"; //this should pass
+                                   //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        /******************Price Validation TESTS******************/
+
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string price = "";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PriceExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = ""; //this should fail
+            price = price.PadRight(500, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "100"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "99"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPLusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "101"; //this should fail
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "50"; //this should pass
+                                       //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "1"; //this should pass
+                                   //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string price = "2"; //this should pass
+                                   //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
 
 
 
+        /******************Supplier Validation TESTS******************/
+
+
+        [TestMethod]
+        public void supplierMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string supplier = "";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void supplierMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string supplier = "a";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void supplierMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string supplier = "aa";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void supplierMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string supplier = "";
+            supplier = supplier.PadRight(49, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void supplierMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string supplier = "";
+            supplier = supplier.PadRight(50, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void supplierMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this shold fail
+            string supplier = "";
+            supplier = supplier.PadRight(51, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void supplierMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string supplier = "";
+            supplier = supplier.PadRight(25, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        /******************Description Validation TESTS******************/
+
+
+        [TestMethod]
+        public void DescriptionMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string description = "";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         [TestMethod]
         public void DescriptionMin()
         {
@@ -282,13 +661,14 @@ namespace Testing3
             clsStock AnIPTV = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string Description = "a"; //this should be ok
-                                      //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //this should pass
+            string description = "a";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
         [TestMethod]
         public void DescriptionMinPlusOne()
         {
@@ -296,10 +676,10 @@ namespace Testing3
             clsStock AnIPTV = new clsStock();
             //string variable to store any error message
             String Error = "";
-            //create some test data to pass to the method
-            string Description = "aa"; //this should be ok
-                                       //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            //this should pass
+            string description = "aa";
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -311,13 +691,13 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Description = "aaaaa"; //this should be ok
-                                          //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            string description = "";
+            description = description.PadRight(499, 'a'); //this should pass
+                                                         //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
         [TestMethod]
         public void DescriptionMax()
         {
@@ -326,11 +706,29 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Description = "aaaaaa"; //this should be ok
-                                           //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            string description = "";
+            description = description.PadRight(500, 'a'); //this should pass
+                                                         //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DescriptionMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnIPTV = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this shold fail
+            string description = "";
+            description = description.PadRight(501, 'a');
+            //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DescriptionMid()
@@ -340,39 +738,10 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Description = "aaa"; //this should be ok
-                                        //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
-        public void DescriptionExtremeMax()
-        {
-            //create an instance of the class we want to create
-            clsStock AnIPTV = new clsStock();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string Description = ""; //this should be ok
-            Description = Description.PadRight(500, 'a');                           
-            //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DescriptionMaxPLusOne()
-        {
-            //create an instance of the class we want to create
-            clsStock AnIPTV = new clsStock();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string Description = ""; //this should be ok
-            //invoke the method
-            Error = AnIPTV.Valid(Description, Supplier, Available);
+            string description = "";
+            description = description.PadRight(250, 'a'); //this should pass
+                                                         //invoke the method
+            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
