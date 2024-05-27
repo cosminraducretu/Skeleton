@@ -121,50 +121,71 @@ namespace ClassLibrary
             return true;
         }
 
+
         /****** Valid METHOD ******/
-        public string Valid(string Description, string Supplier, string Available)
+
+        public string Valid(string description, string supplier, bool available, string quantity, string price)
         {
             //create a string variable to store the error
             String Error = "";
-            if (Description.Length == 0)
-            {
-                //record the error
-                Error = Error + "The house no may not be blank : ";
-            }
-            //if the house no is greater than 6 characters
-            if (Description.Length > 6)
-            {
-                //record the error
-                Error = Error + "The house no must be less than 6 characters : ";
-            }
 
+            // Create temporary variables to store numeric values
+            int quantityTemp;
+            int priceTemp;
 
-            if (Supplier.Length == 0)
+            // Validate description
+            if (string.IsNullOrEmpty(description))
             {
-                //record the error
-                Error = Error + "The house no may not be blank : ";
+                Error += "The description may not be blank. ";
             }
-            //if the house no is greater than 6 characters
-            if (Supplier.Length > 6)
+            else if (description.Length > 500)  
             {
-                //record the error
-                Error = Error + "The house no must be less than 6 characters : ";
+                Error += "The description must be less than or equal to 500 characters. ";
             }
 
-
-            if (Available.Length == 0)
+            // Validate quantity
+            if (!int.TryParse(quantity, out quantityTemp))
             {
-                //record the error
-                Error = Error + "The house no may not be blank : ";
+                Error += "The quantity must be a numeric value. ";
             }
-            //if the house no is greater than 6 characters
-            if (Available.Length > 6)
+            else
             {
-                //record the error
-                Error = Error + "The house no must be less than 6 characters : ";
+                if (quantityTemp < 1)
+                {
+                    Error += "The quantity must be 1 or more. ";
+                }
+                if (quantityTemp > 500)
+                {
+                    Error += "The quantity must be less than or equal to 50000. ";
+                }
             }
 
+            // Validate price
+            if (!int.TryParse(price, out priceTemp))
+            {
+                Error += "The price must be a numeric value. ";
+            }
+            else
+            {
+                if (priceTemp < 1)
+                {
+                    Error += "The price must be 1 or more. ";
+                }
+                if (priceTemp > 100)
+                {
+                    Error += "The price must be less than or equal to 50000. ";
+                }
+            }
 
+            // Validate supplier
+            if (string.IsNullOrEmpty(supplier))
+            {
+                Error += "The supplier may not be blank. ";
+            }
+            else if (supplier.Length > 50)
+            {
+                Error += "The supplier must be less than or equal to 50 characters. ";
+            }
             //return any error messages
             return Error;
         }
