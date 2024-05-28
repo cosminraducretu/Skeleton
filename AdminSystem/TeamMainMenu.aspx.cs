@@ -14,16 +14,16 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     protected void btnCMS_Click(object sender, EventArgs e)
     {
-        Response.Redirect("CustomerLogin.aspx");
+        Response.Redirect("Login.aspx");
     }
 
     protected void btnSMS_Click(object sender, EventArgs e)
     {
-        Response.Redirect("CustomerLogin.aspx");
+        Response.Redirect("Login.aspx");
     }
 
     protected void btnStockMS_Click(object sender, EventArgs e)
     {
-        Response.Redirect("CustomerLogin.aspx");
+        Response.Redirect("Login.aspx");
     }
 }
