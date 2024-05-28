@@ -13,6 +13,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 StaffID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //create a new instance of clsUser
+        clsUser AnUser = new clsUser();
+        //get data from the session object
+        AnUser = (clsUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
         //get the number of the Staff to be processed 
         StaffID = Convert.ToInt32(Session["StaffID"]);
         if (IsPostBack == false)
@@ -27,6 +34,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+
+
     void DisplayStaff()
     {
         //create an instance of the Staff collection
@@ -37,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (recordFound)
         {
             //display the data for the record
-            txtStaff.Text = Staff.ThisStaff.StaffID.ToString();
+            txtStaffID.Text = Staff.ThisStaff.StaffID.ToString();
             txtFirstName.Text = Staff.ThisStaff.FirstName;
             txtLastName.Text = Staff.ThisStaff.LastName;
             txtAddress.Text = Staff.ThisStaff.Address;
@@ -115,7 +124,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        StaffID = Convert.ToInt32(txtStaff.Text);
+        StaffID = Convert.ToInt32(txtStaffID.Text);
         //find the record
         Found = AnStaff.Find(StaffID);
         //if found
@@ -128,5 +137,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAge.Text = AnStaff.Age.ToString();
             chkActive.Checked = AnStaff.Active;
         }
+    }
+
+
+    protected void btnRTN_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the customer login page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click1(object sender, EventArgs e)
+    {
+        //redirect the user to the customer StaffDataEntry page
+        Response.Redirect("StaffDataEntry.aspx");
     }
 }

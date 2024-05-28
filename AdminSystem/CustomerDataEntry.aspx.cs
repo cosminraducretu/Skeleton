@@ -13,6 +13,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        //create a new instance of clsUser
+        clsUser AnUser = new clsUser();
+        //get data from the session object
+        AnUser = (clsUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
         ID = Convert.ToInt32(Session["ID"]);
         if (IsPostBack == false)
         {
@@ -133,6 +140,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //redirect to the main menu
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerDataEntry.aspx");
     }
 }
 
