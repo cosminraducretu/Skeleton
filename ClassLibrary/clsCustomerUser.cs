@@ -57,6 +57,7 @@ namespace ClassLibrary
             }
         }
 
+
         public bool FindUser(string userName, string password)
         {
             clsDataConnection DB = new clsDataConnection();
