@@ -10,9 +10,16 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-            // Retrieve StaffID from the session and assign it to the class-level variable
-            StaffID = Convert.ToInt32(Session["StaffID"]);
-       
+         // Retrieve StaffID from the session and assign it to the class-level variable
+         StaffID = Convert.ToInt32(Session["StaffID"]);
+
+        //create a new instance of clsUser
+        clsUser AnUser = new clsUser();
+        //get data from the session object
+        AnUser = (clsUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
     }
 
     protected void btnYes_Click(object sender, EventArgs e)

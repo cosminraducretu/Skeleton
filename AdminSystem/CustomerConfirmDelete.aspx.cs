@@ -10,7 +10,14 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     Int32 ID;
     protected void Page_Load(object sender, EventArgs e)
     {
-         ID = Convert.ToInt32(Session["ID"]);
+        //create a new instance of clsUser
+        clsUser AnUser = new clsUser();
+        //get data from the session object
+        AnUser = (clsUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
+        ID = Convert.ToInt32(Session["ID"]);
     }
 
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)

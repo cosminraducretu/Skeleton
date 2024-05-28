@@ -55,19 +55,22 @@
         .auto-style8 {
             z-index: 1;
             left: 14px;
-            top: 493px;
+            top: 492px;
             position: absolute;
         }
         .auto-style9 {
             z-index: 1;
-            left: 309px;
-            top: 493px;
+            left: 322px;
+            top: 492px;
             position: absolute;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <p>
+        <asp:Button ID="btnRTN" runat="server" height="29px" OnClick="btnRTN_Click" style="z-index: 1; left: 153px; top: 492px; position: absolute; width: 147px" Text="Return to MainMenu" />
+        </p>
         <div>
         </div>
         <asp:ListBox ID="lstStaffList" runat="server" CssClass="auto-style1"></asp:ListBox>
