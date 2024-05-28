@@ -1,33 +1,20 @@
-﻿<<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffConfirmDelete.aspx.cs" Inherits="_1_ConfirmDelete" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffConfirmDelete.aspx.cs" Inherits="_1_ConfirmDelete" %>
 
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><title></title><style type="text/css">
-                                                                                                  .auto-style2 {
-            z-index: 1;
-            left: 237px;
-            top: 236px;
-            position: absolute;
-        }
-        .auto-style3 {
-            z-index: 1;
-            left: 52px;
-            top: 139px;
-            position: absolute;
-        }
-        .auto-style4 {
-            z-index: 1;
-            left: 98px;
-            top: 236px;
-            position: absolute;
-                                                                                                      right: 1345px;
-                                                                                                  }
-    </style></head><body><form id="form1" runat="server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
         <div>
         </div>
         <p>
-            <asp:Button ID="btnNo" runat="server" CssClass="auto-style2" height="29px" Text="No" width="42px" OnClick="btnNo_Click" />
-        </p>
-        <asp:Label ID="lblMsg" runat="server" CssClass="auto-style3" Text="Are you sure you want to delete this record ?"></asp:Label>
-        <asp:Button ID="btnYes" runat="server" CssClass="auto-style4" OnClick="btnYes_Click" Text="Yes" height="29px" width="42px" />
+            &nbsp;</p>
+        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 430px; top: 234px; position: absolute; width: 324px" Text="Are you sure you wanna delete this record?"></asp:Label>
+        <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 455px; top: 276px; position: absolute; height: 31px; width: 90px;" Text="Yes" />
+        <asp:Button ID="btnNo" runat="server" height="31px" OnClick="btnNo_Click" style="z-index: 1; left: 643px; top: 276px; position: absolute" Text="No" width="90px" />
     </form>
 </body>
 </html>
