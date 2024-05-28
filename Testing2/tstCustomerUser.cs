@@ -10,13 +10,13 @@ namespace Testing2
         [TestMethod]
         public void InstanceOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             Assert.IsNotNull(AnUser);
         }
         [TestMethod]
         public void UserIDPropertyOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             Int32 TestData = 1;
             AnUser.UserID = TestData;
             Assert.AreEqual(AnUser.UserID, TestData);
@@ -24,7 +24,7 @@ namespace Testing2
         [TestMethod]
         public void UserNamePropertyOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             string TestData = "Danny";
             AnUser.UserName = TestData;
             Assert.AreEqual(AnUser.UserName, TestData);
@@ -32,7 +32,7 @@ namespace Testing2
         [TestMethod]
         public void PasswordPropertyOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             string TestData = "Lebitcoinlasvegas44";
             AnUser.Password = TestData;
             Assert.AreEqual(AnUser.Password, TestData);
@@ -40,7 +40,7 @@ namespace Testing2
         [TestMethod]
         public void DepartmentPropertyOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             string TestData = "Customer";
             AnUser.Department = TestData;
             Assert.AreEqual(AnUser.Department, TestData);
@@ -48,7 +48,7 @@ namespace Testing2
         [TestMethod]
         public void FindUserMethodOK()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             Boolean Found = false;
             string UserName = "Danny";
             string Password = "Lebitcoinlasvegas44";
@@ -60,7 +60,7 @@ namespace Testing2
         [TestMethod]
         public void TestUserNamePWFound()
         {
-            clsCustomerUser AnUser = new clsCustomerUser();
+            clsUser AnUser = new clsUser();
             Boolean Found = false;
             Boolean OK = true;
             string UserName = "Danny";
