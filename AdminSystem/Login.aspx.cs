@@ -1,7 +1,5 @@
 ﻿using ClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,54 +8,68 @@ public partial class CustomerLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
     protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
-
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        clsCustomerUser AnUser = new clsCustomerUser();
-        //create the variable to store the username and pasword
-        string UserName = txtUserName.Text;
-        string Password = txtPassword.Text;
-        //create a variable to store the results of the find user operation
-     Boolean Found = false;
-        //get the username entered by the user
-        UserName = Convert.ToString(txtUserName.Text);
-        //get the password entered by the user
-        Password = Convert.ToString(txtPassword.Text);
-        //find the record
-        Found = AnUser.FindUser(UserName, Password);
-        //add a session to capture the user name
-        Session["AnUser"] = AnUser;
-        //if username and/or password is empty
-        if (txtUserName.Text == "")
-        {
-            lblError.Text = "Please Enter a UserName";
-        }
-        else if (txtPassword.Text == "")
-        {
-            lblError.Text = "Please Enter a Password";
+        // Create an instance of clsUser
+        clsUser anUser = new clsUser();
 
-        }
-        //if found
-        else if (Found == true)
+        // Get the username and password entered by the user
+        string userName = txtUserName.Text;
+        string password = txtPassword.Text;
+
+        // Check if username or password is empty
+        if (string.IsNullOrEmpty(userName))
         {
-            Response.Redirect("CustomerList.aspx");
+            lblError.Text = "Please enter a username.";
         }
-        else if (Found == false)
+        else if (string.IsNullOrEmpty(password))
         {
-            lblError.Text = "Login details are incorrect. Please try again";
+            lblError.Text = "Please enter a password.";
+        }
+        else
+        {
+            // Attempt to find the user and validate credentials
+            bool found = anUser.FindUser(userName, password);
+
+            if (found)
+            {
+                // Add a session to capture the user details
+                Session["AnUser"] = anUser;
+
+                // Redirect to the appropriate page based on user role
+                string userType = anUser.Department; // Assuming Department is the role
+                switch (userType)
+                {
+                    case "Customer":
+                        Response.Redirect("CustomerList.aspx");
+                        break;
+                    case "Staff":
+                        Response.Redirect("StaffList.aspx");
+                        break;
+                    case "Stock":
+                        Response.Redirect("StockList.aspx");
+                        break;
+                    default:
+                        lblError.Text = "User type is not recognized.";
+                        break;
+                }
+            }
+            else
+            {
+                lblError.Text = "Login details are incorrect. Please try again.";
+            }
         }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        //redirect to the main menu
+        // Redirect to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
 }

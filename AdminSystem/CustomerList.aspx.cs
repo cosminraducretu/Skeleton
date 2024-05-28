@@ -14,10 +14,10 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayCustomer();
         }
-        //create a new instance of clsCustomerUser
-        clsCustomerUser AnUser = new clsCustomerUser();
+        //create a new instance of clsUser
+        clsUser AnUser = new clsUser();
         //get data from the session object
-        AnUser = (clsCustomerUser)Session["AnUser"];
+        AnUser = (clsUser)Session["AnUser"];
         //display the user name
         Response.Write("Logged in as: " + AnUser.UserName);
     }
