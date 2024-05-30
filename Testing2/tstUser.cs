@@ -5,7 +5,7 @@ using System;
 namespace Testing2
 {
     [TestClass]
-    public class tstCustoUser
+    public class tstUser
     {
         [TestMethod]
         public void InstanceOK()
