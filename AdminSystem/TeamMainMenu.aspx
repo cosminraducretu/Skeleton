@@ -1,35 +1,98 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TeamMainMenu.aspx.cs" Inherits="TeamMainMenu" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 234px;
-            height: 227px;
-            margin-left: 480px;
-            margin-top: 99px;
+    <title>IPTV Main Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #form1 {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-title {
+            font-family: 'Algerian', sans-serif;
+            font-size: x-large;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-buttons button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .form-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-buttons .cancel {
+            background-color: #6c757d;
+        }
+
+        .form-buttons .cancel:hover {
+            background-color: #5a6268;
+        }
+
+        .form-image {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="form-title">
+            IPTV Main Menu
         </div>
-        <asp:Button ID="btnStockMS" runat="server" OnClick="btnStockMS_Click" style="z-index: 1; left: 512px; top: 423px; position: absolute; height: 36px; width: 191px;" Text="Stock Management System" />
-        <asp:Button ID="btnCMS" runat="server" OnClick="btnCMS_Click" style="z-index: 1; left: 395px; top: 370px; position: absolute; height: 36px; width: 191px; right: 469px;" Text="Customer Managmt System" />
-        <p>
-            <asp:Button ID="btnSMS" runat="server" OnClick="btnSMS_Click" style="z-index: 1; left: 623px; top: 370px; position: absolute; width: 191px; height: 36px;" Text="Staff Management System" />
-        </p>
-        <p>
-            &nbsp;</p>
-        <p>
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Algerian" Font-Size="X-Large" Height="40px" style="z-index: 1; left: 520px; top: 132px; position: absolute; width: 297px" Text="IPTV Main Menu"></asp:Label>
-        </p>
+        <div class="form-buttons">
+            <asp:Button ID="btnStockMS" runat="server" OnClick="btnStockMS_Click" Text="Stock Management System" />
+            <asp:Button ID="btnCMS" runat="server" OnClick="btnCMS_Click" Text="Customer Management System" />
+            <asp:Button ID="btnSMS" runat="server" OnClick="btnSMS_Click" Text="Staff Management System" />
+        </div>
+        <div class="form-image">
+            <img src="download.jpeg" alt="Image" />
+        </div>
     </form>
-    <p>
-        <img class="auto-style1" src="download.jpeg" /></p>
 </body>
 </html>
