@@ -1,87 +1,99 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffList.aspx.cs" Inherits="_1_List" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            z-index: 1;
-            left: 10px;
-            top: 37px;
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjust max-width as needed */
+            margin: 0 auto; /* Center align */
+        }
+        
+        /* Base styles for labels, buttons, and textboxes */
+        .styled-label,
+        .styled-button,
+        .styled-textbox {
             position: absolute;
+            z-index: 1;
+        }
+        
+        /* Positioning styles for specific elements */
+        .lstStaffList {
+            top: 37px;
+            left: 10px;
             height: 227px;
             width: 294px;
         }
-        .auto-style2 {
-            z-index: 1;
-            left: 14px;
-            top: 382px;
-            position: absolute;
-        }
-        .auto-style3 {
-            z-index: 1;
-            left: 309px;
-            top: 382px;
-            position: absolute;
-            right: 1052px;
-        }
-        .auto-style4 {
-            z-index: 1;
-            left: 163px;
-            top: 382px;
-            position: absolute;
-        }
-        .auto-style5 {
-            z-index: 1;
-            left: 389px;
+
+        .lblError {
             top: 76px;
-            position: absolute;
+            left: 389px;
         }
-        .auto-style6 {
-            z-index: 1;
-            left: 14px;
+
+        .lblEnterAddress {
             top: 446px;
-            position: absolute;
+            left: 14px;
         }
-        .auto-style7 {
-            z-index: 1;
-            left: 214px;
+
+        .txtFilterAddress {
             top: 445px;
-            position: absolute;
+            left: 214px;
             width: 215px;
         }
-        .auto-style8 {
-            z-index: 1;
+
+        .btnAdd {
+            top: 382px;
             left: 14px;
-            top: 492px;
-            position: absolute;
+            width: 124px;
         }
-        .auto-style9 {
-            z-index: 1;
-            left: 322px;
+
+        .btnDelete {
+            top: 382px;
+            left: 309px;
+            width: 124px;
+        }
+
+        .btnEdit {
+            top: 382px;
+            left: 163px;
+            width: 124px;
+        }
+
+        .btnFilter {
             top: 492px;
-            position: absolute;
+            left: 14px;
+            width: 124px;
+        }
+
+        .btnClearFilter {
+            top: 492px;
+            left: 322px;
+            width: 124px;
+        }
+
+        .btnRTN {
+            top: 492px;
+            left: 153px;
+            width: 147px;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <p>
-        <asp:Button ID="btnRTN" runat="server" height="29px" OnClick="btnRTN_Click" style="z-index: 1; left: 153px; top: 492px; position: absolute; width: 147px" Text="Return to MainMenu" />
-        </p>
-        <div>
+        <div class="container">
+            <asp:ListBox ID="lstStaffList" runat="server" CssClass="styled-label lstStaffList"></asp:ListBox>
+            <asp:Button ID="btnAdd" runat="server" CssClass="styled-button btnAdd" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnDelete" runat="server" CssClass="styled-button btnDelete" OnClick="btnDelete_Click" Text="Delete" />
+            <asp:Button ID="btnEdit" runat="server" CssClass="styled-button btnEdit" Text="Edit" OnClick="btnEdit_Click" />
+            <asp:Label ID="lblError" runat="server" CssClass="styled-label lblError"></asp:Label>
+            <asp:Label ID="lblEnterAddress" runat="server" CssClass="styled-label lblEnterAddress" Text="Enter an address:"></asp:Label>
+            <asp:TextBox ID="txtFilterAddress" runat="server" CssClass="styled-textbox txtFilterAddress"></asp:TextBox>
+            <asp:Button ID="btnFilter" runat="server" CssClass="styled-button btnFilter" OnClick="btnFilter_Click" Text="Apply Filter" />
+            <asp:Button ID="btnClearFilter" runat="server" CssClass="styled-button btnClearFilter" OnClick="btnClearFilter_Click" Text="Clear Filter" />
+            <asp:Button ID="btnRTN" runat="server" CssClass="styled-button btnRTN" OnClick="btnRTN_Click" Text="Return to MainMenu" />
         </div>
-        <asp:ListBox ID="lstStaffList" runat="server" CssClass="auto-style1"></asp:ListBox>
-        <asp:Button ID="btnAdd" runat="server" CssClass="auto-style2" OnClick="btnAdd_Click" Text="Add" height="29px" width="124px" />
-        <asp:Button ID="btnDelete" runat="server" CssClass="auto-style3" OnClick="btnDelete_Click" Text="Delete" height="29px" width="124px" />
-        <asp:Button ID="btnEdit" runat="server" CssClass="auto-style4" height="29px" Text="Edit" width="124px" OnClick="btnEdit_Click" />
-        <asp:Label ID="lblError" runat="server" CssClass="auto-style5"></asp:Label>
-        <asp:Label ID="lblEnterAddress" runat="server" CssClass="auto-style6" Text="Enter an address:"></asp:Label>
-        <asp:TextBox ID="txtFilterAddress" runat="server" CssClass="auto-style7"></asp:TextBox>
-        <asp:Button ID="btnFilter" runat="server" CssClass="auto-style8" OnClick="btnFilter_Click" Text="Apply Filter" height="29px" width="124px" />
-        <asp:Button ID="btnClearFilter" runat="server" CssClass="auto-style9" height="29px" OnClick="btnClearFilter_Click" Text="Clear Filter" width="124px" />
     </form>
 </body>
 </html>
