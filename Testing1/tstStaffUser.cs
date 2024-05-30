@@ -2,21 +2,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing2
+namespace Testing1
 {
     [TestClass]
-    public class tstUser
+    public class tstStaffUser
     {
         [TestMethod]
         public void InstanceOK()
         {
-            clsUser AnUser = new clsUser();
+            clsStaffUser AnUser = new clsStaffUser();
             Assert.IsNotNull(AnUser);
         }
         [TestMethod]
         public void UserIDPropertyOK()
         {
-            clsUser AnUser = new clsUser();
+            clsStaffUser AnUser = new clsStaffUser();
             Int32 TestData = 1;
             AnUser.UserID = TestData;
             Assert.AreEqual(AnUser.UserID, TestData);
@@ -24,34 +24,34 @@ namespace Testing2
         [TestMethod]
         public void UserNamePropertyOK()
         {
-            clsUser AnUser = new clsUser();
-            string TestData = "Danny";
+            clsStaffUser AnUser = new clsStaffUser();
+            string TestData = "Cosmin";
             AnUser.UserName = TestData;
             Assert.AreEqual(AnUser.UserName, TestData);
         }
         [TestMethod]
         public void PasswordPropertyOK()
         {
-            clsUser AnUser = new clsUser();
-            string TestData = "danny";
+            clsStaffUser AnUser = new clsStaffUser();
+            string TestData = "Cosmin123";
             AnUser.Password = TestData;
             Assert.AreEqual(AnUser.Password, TestData);
         }
         [TestMethod]
         public void DepartmentPropertyOK()
         {
-            clsUser AnUser = new clsUser();
-            string TestData = "Customer";
+            clsStaffUser AnUser = new clsStaffUser();
+            string TestData = "Staff";
             AnUser.Department = TestData;
             Assert.AreEqual(AnUser.Department, TestData);
         }
         [TestMethod]
         public void FindUserMethodOK()
         {
-            clsUser AnUser = new clsUser();
+            clsStaffUser AnUser = new clsStaffUser();
             Boolean Found = false;
-            string UserName = "Danny";
-            string Password = "danny";
+            string UserName = "Cosmin";
+            string Password = "Cosmin123";
             //invoke the method
             Found = AnUser.FindUser(UserName, Password);
             //test to see if the result is true
@@ -60,11 +60,11 @@ namespace Testing2
         [TestMethod]
         public void TestUserNamePWFound()
         {
-            clsUser AnUser = new clsUser();
+            clsStaffUser AnUser = new clsStaffUser();
             Boolean Found = false;
             Boolean OK = true;
-            string UserName = "Danny";
-            string Password = "danny";
+            string UserName = "Cosmin";
+            string Password = "Cosmin123";
             Found = AnUser.FindUser(UserName, Password);
             if (AnUser.UserName != UserName && AnUser.Password != Password)
             {

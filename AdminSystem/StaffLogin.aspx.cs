@@ -1,21 +1,21 @@
 ﻿using ClassLibrary;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class CustomerLogin : System.Web.UI.Page
+public partial class StaffLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-    }
 
-    protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-    {
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
+
         // Create an instance of clsUser
         clsCustomerUser anUser = new clsCustomerUser();
 
@@ -46,9 +46,11 @@ public partial class CustomerLogin : System.Web.UI.Page
                 string userType = anUser.Department; // Assuming Department is the role
                 switch (userType)
                 {
-                    case "Customer":
-                        Response.Redirect("CustomerList.aspx");
+                    
+                    case "Staff":
+                        Response.Redirect("StaffList.aspx");
                         break;
+                    
                     default:
                         lblError.Text = "User type is not recognized.";
                         break;
