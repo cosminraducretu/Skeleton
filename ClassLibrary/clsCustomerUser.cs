@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    public class clsUser
+    public class clsCustomerUser
     {
         // Private data members
         private int mUserID;

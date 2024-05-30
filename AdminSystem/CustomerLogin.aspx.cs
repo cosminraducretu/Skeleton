@@ -17,7 +17,7 @@ public partial class CustomerLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         // Create an instance of clsUser
-        clsUser anUser = new clsUser();
+        clsCustomerUser anUser = new clsCustomerUser();
 
         // Get the username and password entered by the user
         string userName = txtUserName.Text;

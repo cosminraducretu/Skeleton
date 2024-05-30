@@ -14,9 +14,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
         //create a new instance of clsUser
-        clsUser AnUser = new clsUser();
+        clsCustomerUser AnUser = new clsCustomerUser();
         //get data from the session object
-        AnUser = (clsUser)Session["AnUser"];
+        AnUser = (clsCustomerUser)Session["AnUser"];
         //display the user name
         Response.Write("Logged in as: " + AnUser.UserName);
 
