@@ -9,9 +9,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StockID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        StockID = Convert.ToInt32(Session["ID"]);
+        if (IsPostBack == false)
+        {
+            if (StockID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+    }
 
+    void DisplayCustomer()
+    {
+        clsStockCollection Stock = new clsStockCollection();
+        Stock.ThisStock.Find(StockID);
+        txtStockid.Text = Stock.ThisStock.StockID.ToString();
+        txtQuantity.Text = Stock.ThisStock.Quantity.ToString();
+        txtDescription.Text = Stock.ThisStock.Description.ToString();
+        txtPrice.Text = Stock.ThisStock.Price.ToString();
+        txtSupplier.Text = Stock.ThisStock.Supplier.ToString();
+        chkActive.Checked = Stock.ThisStock.Available;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -36,6 +57,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             // Capture the house no
+            AnIPTV.StockID = StockID;
+            // Capture the house no
             AnIPTV.Description = description;
             // Capture the street
             AnIPTV.Supplier = supplier;
@@ -47,15 +70,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnIPTV.Available = chkActive.Checked;
             // Capture active status
             AnIPTV.Available = Active;
-            //Store the IPTV in the session object
-            Session["AnIPTV"] = AnIPTV;
-            //Navigate to the view Page 
-            Response.Redirect("StockViewer.aspx");
+            //create a new instance of the address collection
+            clsStockCollection StockList = new clsStockCollection();
+            //if this is a new record i.e. ID = -1 then add the data
+            if (StockID == -1)
+            {
+                StockList.ThisStock = AnIPTV;
+                //add the new record
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(StockID);
+                StockList.ThisStock = AnIPTV;
+                StockList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("StockList.aspx");
         }
         else
         {
-            // Display the error message
+            //display the error message 
             lblError.Text = Error;
         }
+
+
+
     }
 }

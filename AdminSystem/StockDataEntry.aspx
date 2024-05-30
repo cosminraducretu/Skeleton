@@ -11,7 +11,7 @@
         <div style="height: 19px">
         </div>
         <asp:Label ID="lblStockId" runat="server" height="19px" style="z-index: 1; left: 10px; top: 34px; position: absolute" Text="Stock ID" width="69px"></asp:Label>
-        <asp:TextBox ID="txtStockid" runat="server" height="22px" style="z-index: 1; left: 141px; top: 34px; position: absolute" width="128px"></asp:TextBox>
+        <asp:TextBox ID="txtStockid" runat="server" height="22px" style="z-index: 1; left: 141px; top: 34px; position: absolute; bottom: 614px;" width="128px"></asp:TextBox>
         <asp:Label ID="lblQuantity" runat="server" height="19px" style="z-index: 1; left: 10px; top: 78px; position: absolute" Text="Quantity" width="69px"></asp:Label>
         <asp:TextBox ID="txtQuantity" runat="server" height="22px" style="z-index: 1; left: 141px; top: 80px; position: absolute; bottom: 568px;" width="128px"></asp:TextBox>
         <asp:Label ID="lblDescription" runat="server" style="z-index: 1; left: 10px; top: 133px; position: absolute; bottom: 524px" Text="Description"></asp:Label>
