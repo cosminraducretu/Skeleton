@@ -5,7 +5,7 @@ using System;
 namespace Testing2
 {
     [TestClass]
-    public class tstCustomerUser
+    public class tstCustoUser
     {
         [TestMethod]
         public void InstanceOK()
@@ -33,7 +33,7 @@ namespace Testing2
         public void PasswordPropertyOK()
         {
             clsUser AnUser = new clsUser();
-            string TestData = "Lebitcoinlasvegas44";
+            string TestData = "danny";
             AnUser.Password = TestData;
             Assert.AreEqual(AnUser.Password, TestData);
         }
@@ -51,7 +51,7 @@ namespace Testing2
             clsUser AnUser = new clsUser();
             Boolean Found = false;
             string UserName = "Danny";
-            string Password = "Lebitcoinlasvegas44";
+            string Password = "danny";
             //invoke the method
             Found = AnUser.FindUser(UserName, Password);
             //test to see if the result is true
@@ -64,7 +64,7 @@ namespace Testing2
             Boolean Found = false;
             Boolean OK = true;
             string UserName = "Danny";
-            string Password = "Lebitcoinlasvegas44";
+            string Password = "danny";
             Found = AnUser.FindUser(UserName, Password);
             if (AnUser.UserName != UserName && AnUser.Password != Password)
             {
