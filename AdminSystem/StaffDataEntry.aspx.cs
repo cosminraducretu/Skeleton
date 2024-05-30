@@ -117,26 +117,53 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        //create an instance of the address class
+        // Create an instance of the address class
         clsStaff AnStaff = new clsStaff();
-        //create a variable to store the primary key
+        // Create a variable to store the primary key
         Int32 StaffID;
-        //create a variable to store the result of the find operation
+        // Create a variable to store the result of the find operation
         Boolean Found = false;
-        //get the primary key entered by the user
-        StaffID = Convert.ToInt32(txtStaffID.Text);
-        //find the record
-        Found = AnStaff.Find(StaffID);
-        //if found
-        if (Found == true)
+
+        // Check if the input is a valid integer
+        if (Int32.TryParse(txtStaffID.Text, out StaffID))
         {
-           // display the values of the properties in the form
-            txtFirstName.Text = AnStaff.FirstName;
-            txtLastName.Text = AnStaff.LastName;
-            txtAddress.Text = AnStaff.Address;
-            txtAge.Text = AnStaff.Age.ToString();
-            chkActive.Checked = AnStaff.Active;
+            // Find the record
+            Found = AnStaff.Find(StaffID);
+            // If found
+            if (Found == true)
+            {
+                // Display the values of the properties in the form
+                txtFirstName.Text = AnStaff.FirstName;
+                txtLastName.Text = AnStaff.LastName;
+                txtAddress.Text = AnStaff.Address;
+                txtAge.Text = AnStaff.Age.ToString();
+                chkActive.Checked = AnStaff.Active;
+            }
+            else
+            {
+                // If not found, display an error message
+                lblError0.Text = "Staff ID not found.";
+                // Clear the form fields
+                ClearFormFields();
+            }
         }
+        else
+        {
+            // If input is not a valid integer, display an error message
+            lblError0.Text = "Please enter a valid Staff ID.";
+            // Clear the form fields
+            ClearFormFields();
+        }
+    }
+
+    // Method to clear form fields
+    private void ClearFormFields()
+    {
+        txtFirstName.Text = "";
+        txtLastName.Text = "";
+        txtAddress.Text = "";
+        txtAge.Text = "";
+        chkActive.Checked = false;
     }
 
 
