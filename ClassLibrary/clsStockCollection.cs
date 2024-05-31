@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 namespace ClassLibrary
 {
     public class clsStockCollection
@@ -51,7 +52,7 @@ namespace ClassLibrary
             //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_SelectAll");
+            DB.Execute("sproc_tblStock_SelectAll"); 
             PopulateArray(DB);
         }
 
@@ -60,7 +61,7 @@ namespace ClassLibrary
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@Quantity", mThisStock.Quantity);
-            DB.AddParameter("@Description", mThisStock.Description);
+            DB.AddParameter("@IPTVDescription", mThisStock.Description);
             DB.AddParameter("@Supplier", mThisStock.Supplier);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@Available", mThisStock.Available);
@@ -82,45 +83,52 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockID", mThisStock.StockID);
             DB.AddParameter("@Quantity", mThisStock.Quantity);
-            DB.AddParameter("@Description", mThisStock.Description);
+            DB.AddParameter("@IPTVDescription", mThisStock.Description);
             DB.AddParameter("@Supplier", mThisStock.Supplier);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@Available", mThisStock.Available);
             DB.Execute("sproc_tblStock_Update");
         }
-        public void ReportByAvailable(bool Available)
+        public void ReportByAvailable(bool isAvailable)
         {
+            //filters the records base on a full or partial address
+            //connect to the database 
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Available", Available);
+            //send the Address parameter to the database
+            DB.AddParameter("@Available", isAvailable);
+            //execute the store procedure
             DB.Execute("sproc_tblStock_FilterByAvailable");
+            //populate the array list with the data table 
             PopulateArray(DB);
         }
         void PopulateArray(clsDataConnection DB)
         {
-            //populates the array list based on the data table in the parameter DB
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
+            //populates the array list based on the data table in the parameter DB 
+            //variable for the index 
+            Int32 index = 0;
+            //variable to store the record count 
             Int32 RecordCount;
             //get the count of records
             RecordCount = DB.Count;
-            //clear the private array list
+            //clear the private list to process
             mStockList = new List<clsStock>();
-            //while there are records to process
-            while (Index < RecordCount)
+            while (index < RecordCount)
             {
-                clsStock AnIPTTV = new clsStock();
+                //create a blank stock object
+                clsStock AnStock = new clsStock();
                 //read in the fields from the current record
-                AnIPTTV.StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]);
-                AnIPTTV.Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]);
-                AnIPTTV.Description = Convert.ToString(DB.DataTable.Rows[Index]["IPTVDescription"]);
-                AnIPTTV.Supplier = Convert.ToString(DB.DataTable.Rows[Index]["Supplier"]);
-                AnIPTTV.Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]);
-                AnIPTTV.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
-                mStockList.Add(AnIPTTV);
-                //point at the next record
-                Index++;
+                AnStock.StockID = Convert.ToInt32(DB.DataTable.Rows[index]["StockID"]);
+                AnStock.Quantity = Convert.ToInt32(DB.DataTable.Rows[index]["Quantity"]);
+                AnStock.Description = Convert.ToString(DB.DataTable.Rows[index]["IPTVDescription"]); // Ensure this matches your database column name
+                AnStock.Price = Convert.ToInt32(DB.DataTable.Rows[index]["Price"]);
+                AnStock.Supplier = Convert.ToString(DB.DataTable.Rows[index]["Supplier"]);
+                AnStock.Available = Convert.ToBoolean(DB.DataTable.Rows[index]["Available"]);
+                //add the record to the private data member
+                mStockList.Add(AnStock);
+                //point at the next record 
+                index++;
             }
         }
 

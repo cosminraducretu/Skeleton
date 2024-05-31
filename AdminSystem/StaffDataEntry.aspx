@@ -30,7 +30,8 @@
             top: 584px;
             position: absolute;
             width: 71px;
-            }
+            right: 725px;
+        }
         .auto-style13 {
             z-index: 1;
             left: 240px;
@@ -43,6 +44,7 @@
             left: 129px;
             top: 584px;
             position: absolute;
+            right: 614px;
         }
         #form2 {
             height: 229px;

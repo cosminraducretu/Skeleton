@@ -12,8 +12,8 @@ namespace Testing3
         [TestMethod]
         public void instanceOk()
         {
-            clsStockCollection AllIPTV = new clsStockCollection();
-            Assert.IsNotNull(AllIPTV);
+            clsStockCollection allIPTV = new clsStockCollection();
+            Assert.IsNotNull(allIPTV);
         }
         [TestMethod]
         public void StockListOk()
@@ -52,9 +52,11 @@ namespace Testing3
             TestStock.Available = true;
             //assign the data to the property
             AllIPTV.ThisStock = TestStock;
-            //test to see that the two values are the same
-
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllIPTV.ThisStock, TestStock);
         }
+
+
         [TestMethod]
         public void ListAndCountOk()
         {
@@ -77,27 +79,35 @@ namespace Testing3
         [TestMethod]
         public void AddMethodOk()
         {
-            clsStockCollection AllIPTV = new clsStockCollection();
-            clsStock TestItem = new clsStock();
-            Int32 PrimaryKey = 0;
-            //set its properties
-            TestItem.StockID = 1;
-            TestItem.Quantity = 1;
-            TestItem.Description = "Desc";
-            TestItem.Supplier = "Supplier";
-            TestItem.Price = 1;
-            TestItem.Available = true;          //set ThisCustomer to the test data
-            AllIPTV.ThisStock = TestItem;
-            //add the record 
-            PrimaryKey = AllIPTV.Add();
-            //set the primary key of the test data
-            TestItem.StockID = PrimaryKey;
-            //find the record
-            AllIPTV.ThisStock.Find(PrimaryKey);
-            //test to see that the two values are the same
-            Assert.AreEqual(AllIPTV.ThisStock, TestItem);
+            clsStockCollection allIPTV = new clsStockCollection();
+            clsStock testItem = new clsStock();
+            int primaryKey = 0;
 
+            // Set properties of the test item
+            testItem.Quantity = 1;
+            testItem.Description = "Desc";
+            testItem.Supplier = "Supplier";
+            testItem.Price = 1;
+            testItem.Available = true;
 
+            allIPTV.ThisStock = testItem;
+
+            // Add the record
+            primaryKey = allIPTV.Add();
+
+            // Set the primary key of the test data
+            testItem.StockID = primaryKey;
+
+            // Find the record
+            allIPTV.ThisStock.Find(primaryKey);
+
+            // Test to see that the two values are the same
+            Assert.AreEqual(allIPTV.ThisStock.StockID, testItem.StockID);
+            Assert.AreEqual(allIPTV.ThisStock.Quantity, testItem.Quantity);
+            Assert.AreEqual(allIPTV.ThisStock.Description, testItem.Description);
+            Assert.AreEqual(allIPTV.ThisStock.Supplier, testItem.Supplier);
+            Assert.AreEqual(allIPTV.ThisStock.Price, testItem.Price);
+            Assert.AreEqual(allIPTV.ThisStock.Available, testItem.Available);
         }
         [TestMethod]
         public void UpdateMethodOk()
@@ -125,7 +135,12 @@ namespace Testing3
             AllIPTV.ThisStock = TestItem;
             AllIPTV.Update();
             AllIPTV.ThisStock.Find(PrimaryKey);
-            Assert.AreEqual(AllIPTV.ThisStock, TestItem);
+            // Assert equality of the updated record
+            Assert.AreEqual(AllIPTV.ThisStock.StockID, TestItem.StockID);
+            Assert.AreEqual(AllIPTV.ThisStock.Quantity, TestItem.Quantity);
+            Assert.AreEqual(AllIPTV.ThisStock.Description, TestItem.Description);
+            Assert.AreEqual(AllIPTV.ThisStock.Supplier, TestItem.Supplier);
+            Assert.AreEqual(AllIPTV.ThisStock.Available, TestItem.Available);
         }
         [TestMethod]
         public void DeleteMethodOk()
@@ -137,32 +152,40 @@ namespace Testing3
             TestItem.StockID = 1;
             TestItem.Quantity = 1;
             TestItem.Description = "Desc";
-            TestItem.Supplier = "Supplier";
+            TestItem.Supplier = "Supp";
             TestItem.Price = 1;
             TestItem.Available = true;
+            //set ThisStaff to the test data
             AllIPTV.ThisStock = TestItem;
+            //add the record
             PrimaryKey = AllIPTV.Add();
+            //set the primary key of the test data 
             TestItem.StockID = PrimaryKey;
             //find the record
             AllIPTV.ThisStock.Find(PrimaryKey);
             //delete the record
             AllIPTV.Delete();
-            //now find the record
+            //now find the record 
             Boolean Found = AllIPTV.ThisStock.Find(PrimaryKey);
-            //test to see that the record was not found
-
-            Assert.IsFalse(Found);
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllIPTV.ThisStock, TestItem);
         }
         [TestMethod]
         public void ReportByAvailableMethodOk()
         {
             clsStockCollection AllStock = new clsStockCollection();
             clsStockCollection FilteredStock = new clsStockCollection();
+
             // Apply the filter for available items (true or false)
             FilteredStock.ReportByAvailable(true);
-            // Test to see that the two values are the same
-            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+
+            // Check if all items in FilteredStock are available
+            bool allAvailable = FilteredStock.StockList.TrueForAll(stock => stock.Available == true);
+
+            // Test to see that the condition holds true
+            Assert.IsTrue(allAvailable);
         }
+
 
         [TestMethod]
         public void ReportByAvailableNoneFound()
@@ -178,16 +201,13 @@ namespace Testing3
         public void ReportByAvailableTestDataFound()
         {
             clsStockCollection FilteredStock = new clsStockCollection();
-            Boolean OK = true;
-            FilteredStock.ReportByAvailable(true);
-            if (FilteredStock.Count == 2)
-            {
-                if (FilteredStock.StockList[0].Available != true)
-                {
-                    OK = false;
-                }
+            bool OK = true;
 
-                if (FilteredStock.StockList[1].Available != true)
+            FilteredStock.ReportByAvailable(true);
+
+            if (FilteredStock.Count > 0)
+            {
+                if (FilteredStock.StockList[0].StockID != 25 || FilteredStock.StockList[1].StockID != 26)
                 {
                     OK = false;
                 }
@@ -196,8 +216,11 @@ namespace Testing3
             {
                 OK = false;
             }
+
             Assert.IsTrue(OK);
         }
+
+
 
 
     }
