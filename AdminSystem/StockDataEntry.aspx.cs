@@ -18,74 +18,76 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             if (StockID != -1)
             {
-                DisplayCustomer();
+                DisplayStock();
             }
         }
     }
 
-    void DisplayCustomer()
+    void DisplayStock()
     {
+        //create an instance of the Staff collection
         clsStockCollection Stock = new clsStockCollection();
-        Stock.ThisStock.Find(StockID);
-        txtStockid.Text = Stock.ThisStock.StockID.ToString();
-        txtQuantity.Text = Stock.ThisStock.Quantity.ToString();
-        txtDescription.Text = Stock.ThisStock.Description.ToString();
-        txtPrice.Text = Stock.ThisStock.Price.ToString();
-        txtSupplier.Text = Stock.ThisStock.Supplier.ToString();
-        chkActive.Checked = Stock.ThisStock.Available;
+        //find the record to update
+        bool recordFound = Stock.ThisStock.Find(StockID);
+
+        if (recordFound)
+        {
+            //display the data for the record
+            txtStockid.Text = Stock.ThisStock.StockID.ToString();
+            txtQuantity.Text = Stock.ThisStock.Quantity.ToString();
+            txtDescription.Text = Stock.ThisStock.Description.ToString();
+            txtPrice.Text = Stock.ThisStock.Price.ToString();
+            txtSupplier.Text = Stock.ThisStock.Supplier.ToString();
+            chkActive.Checked = Stock.ThisStock.Available;
+        }
+        else
+        {
+            // Handle the case when the record is not found
+            Console.WriteLine("Stock record not found.");
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //Create a new instance of clsStock
-        clsStock AnIPTV = new clsStock();
-        // Capture the street
+        // create a new instance of clsStaff
+        clsStock AStock = new clsStock();
+
+
         string quantity = txtQuantity.Text;
-        // Capture the town
         string price = txtPrice.Text;
-        // Capture the post code
         string supplier = txtSupplier.Text;
-        // Capture the date added
         string description = txtDescription.Text;
-        // Capture active status
-        bool Active = chkActive.Checked;
-        // Variable to store any error messages
+        string available = chkActive.Text;
+
         string Error = "";
-        // Validate the data
-        Error = AnIPTV.Valid(description, supplier, Active, quantity, price);
+
+        Error = AStock.Valid(description, supplier, quantity, price);
 
         if (Error == "")
         {
-            // Capture the house no
-            AnIPTV.StockID = StockID;
-            // Capture the house no
-            AnIPTV.Description = description;
-            // Capture the street
-            AnIPTV.Supplier = supplier;
-            // Capture the town
-            AnIPTV.Quantity = Convert.ToInt32(quantity);
-            // Capture the post code
-            AnIPTV.Price = Convert.ToInt32(price);
-            //capture the avilability
-            AnIPTV.Available = chkActive.Checked;
-            // Capture active status
-            AnIPTV.Available = Active;
-            //create a new instance of the address collection
+            AStock.StockID = StockID;
+            AStock.Supplier = txtSupplier.Text;
+            AStock.Description = txtDescription.Text;
+            AStock.Price = Convert.ToInt32(txtPrice.Text);
+            AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
+            AStock.Available = chkActive.Checked;
+
+
+            //create a new instance of the address collection 
             clsStockCollection StockList = new clsStockCollection();
-            //if this is a new record i.e. ID = -1 then add the data
+            //set the ThisStaff property
             if (StockID == -1)
             {
-                StockList.ThisStock = AnIPTV;
-                //add the new record
+                StockList.ThisStock = AStock;
                 StockList.Add();
             }
             else
             {
                 StockList.ThisStock.Find(StockID);
-                StockList.ThisStock = AnIPTV;
+                StockList.ThisStock = AStock;
                 StockList.Update();
             }
-            //redirect back to the list page
+            //navigate to the view page 
             Response.Redirect("StockList.aspx");
         }
         else
@@ -94,7 +96,80 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = Error;
         }
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StockDataEntry.aspx");
+
+    }
 
 
+
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the address class
+        clsStock AnIPTV = new clsStock();
+        // Create a variable to store the primary key
+        Int32 StockID;
+        // Create a variable to store the result of the find operation
+        Boolean Found = false;
+
+        // Check if the input is a valid integer
+        if (Int32.TryParse(txtStockid.Text, out StockID))
+        {
+            // Find the record
+            Found = AnIPTV.Find(StockID);
+            // If found
+            if (Found == true)
+            {
+                // Display the values of the properties in the form
+                txtDescription.Text = AnIPTV.Description;
+                txtSupplier.Text = AnIPTV.Supplier;
+                txtPrice.Text = AnIPTV.Price.ToString();
+                txtQuantity.Text = AnIPTV.Quantity.ToString();
+                chkActive.Checked = AnIPTV.Available;
+            }
+            else
+            {
+                // If not found, display an error message
+                lblError.Text = "Stock ID not found.";
+                // Clear the form fields
+                ClearFormFields();
+            }
+        }
+        else
+        {
+            // If input is not a valid integer, display an error message
+            lblError.Text = "Please enter a valid Stock ID.";
+            // Clear the form fields
+            ClearFormFields();
+        }
+    
+    }
+
+    private void ClearFormFields()
+    {
+        txtDescription.Text = "";
+        txtSupplier.Text = "";
+        txtPrice.Text = "";
+        txtQuantity.Text = "";
+        chkActive.Checked = false;
+    }
+
+
+
+    protected void btnCancel_Click1(object sender, EventArgs e)
+    {
+        //redirect the user to the customer StaffDataEntry page
+        Response.Redirect("StockDataEntry.aspx");
+    }
+
+    protected void btnRTN_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the customer login page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
