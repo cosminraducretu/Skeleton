@@ -49,54 +49,66 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        // create a new instance of clsStaff
-        clsStock AStock = new clsStock();
-
-
-        string quantity = txtQuantity.Text;
-        string price = txtPrice.Text;
-        string supplier = txtSupplier.Text;
-        string description = txtDescription.Text;
-        string available = chkActive.Text;
-
-        string Error = "";
-
-        Error = AStock.Valid(description, supplier, quantity, price);
-
-        if (Error == "")
+        try
         {
-            AStock.StockID = StockID;
-            AStock.Supplier = txtSupplier.Text;
-            AStock.Description = txtDescription.Text;
-            AStock.Price = Convert.ToInt32(txtPrice.Text);
-            AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
-            AStock.Available = chkActive.Checked;
+            // create a new instance of clsStock
+            clsStock AStock = new clsStock();
 
+            string quantity = txtQuantity.Text;
+            string price = txtPrice.Text;
+            string supplier = txtSupplier.Text;
+            string description = txtDescription.Text;
+            string available = chkActive.Text;
 
-            //create a new instance of the address collection 
-            clsStockCollection StockList = new clsStockCollection();
-            //set the ThisStaff property
-            if (StockID == -1)
+            string Error = "";
+
+            Error = AStock.Valid(description, supplier, quantity, price);
+
+            if (Error == "")
             {
-                StockList.ThisStock = AStock;
-                StockList.Add();
+                AStock.StockID = StockID;
+                AStock.Supplier = txtSupplier.Text;
+                AStock.Description = txtDescription.Text;
+                AStock.Price = Convert.ToInt32(txtPrice.Text);
+                AStock.Quantity = Convert.ToInt32(txtQuantity.Text);
+                AStock.Available = chkActive.Checked;
+
+                //create a new instance of the stock collection 
+                clsStockCollection StockList = new clsStockCollection();
+                //set the ThisStock property
+                if (StockID == -1)
+                {
+                    StockList.ThisStock = AStock;
+                    int result = StockList.Add();
+                    lblError.Text = "record added.";
+                    if (result == 0)
+                    {
+                        lblError.Text = "Failed to add the record.";
+                    }
+                }
+                else
+                {
+                    StockList.ThisStock.Find(StockID);
+                    StockList.ThisStock = AStock;
+                    StockList.Update();
+                }
+                //navigate to the view page 
+                Response.Redirect("StockList.aspx");
             }
             else
             {
-                StockList.ThisStock.Find(StockID);
-                StockList.ThisStock = AStock;
-                StockList.Update();
+                //display the error message 
+                lblError.Text = Error;
             }
-            //navigate to the view page 
-            Response.Redirect("StockList.aspx");
         }
-        else
+        catch (Exception ex)
         {
-            //display the error message 
-            lblError.Text = Error;
+            lblError.Text = "An error occurred: " + ex.Message;
+            // Optionally, log the exception
+            Console.WriteLine(ex);
         }
-
     }
+
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
@@ -164,7 +176,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnCancel_Click1(object sender, EventArgs e)
     {
         //redirect the user to the customer StaffDataEntry page
-        Response.Redirect("StockDataEntry.aspx");
+        Response.Redirect("StockList.aspx");
     }
 
     protected void btnRTN_Click(object sender, EventArgs e)

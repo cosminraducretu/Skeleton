@@ -19,6 +19,9 @@
         .styled-textbox {
             position: absolute;
             z-index: 1;
+            top: 34px;
+            left: 10px;
+            width: 368px;
         }
         
         /* Positioning styles for specific elements */
@@ -34,12 +37,12 @@
             left: 389px;
         }
 
-        .lblEnterAddress {
+        .lblEnterAvailability {
             top: 446px;
             left: 14px;
         }
 
-        .txtFilterAddress {
+        .txtFilterAvailability {
             top: 445px;
             left: 352px;
             width: 115px;
@@ -86,17 +89,17 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <asp:ListBox ID="lstStockList" runat="server" CssClass="styled-label lstStaffList" OnSelectedIndexChanged="lstStockList_SelectedIndexChanged1"></asp:ListBox>
             <asp:Button ID="btnAdd" runat="server" CssClass="styled-button btnAdd" OnClick="btnAdd_Click" Text="Add" />
             <asp:Button ID="btnDelete" runat="server" CssClass="styled-button btnDelete" OnClick="btnDelete_Click" Text="Delete" />
             <asp:Button ID="btnEdit" runat="server" CssClass="styled-button btnEdit" Text="Edit" OnClick="btnEdit_Click" />
             <asp:Label ID="lblError" runat="server" CssClass="styled-label lblError"></asp:Label>
-            <asp:Label ID="lblEnterAddress" runat="server" CssClass="styled-label lblEnterAddress" Text="Shoose if want availble IPTVs that are available or not:"></asp:Label>
-            <asp:CheckBox ID="Checkav" runat="server" CssClass="styled-textbox txtFilterAddress" Text="[Availability]"></asp:CheckBox>
+            <asp:Label ID="lblEnterAvailability" runat="server" CssClass="styled-label lblEnterAvailability" Text="Shoose if want availble IPTVs that are available or not:"></asp:Label>
+            <asp:CheckBox ID="Checkav" runat="server" CssClass="styled-textbox txtFilterAvailability" Text="[Availability]"></asp:CheckBox>
             <asp:Button ID="btnFilter" runat="server" CssClass="styled-button btnFilter" OnClick="btnFilter_Click" Text="Apply Filter" />
             <asp:Button ID="btnClearFilter" runat="server" CssClass="styled-button btnClearFilter" OnClick="btnClearFilter_Click" Text="Clear Filter" />
             <asp:Button ID="btnRTN" runat="server" CssClass="styled-button btnRTN" OnClick="btnRTN_Click" Text="Return to MainMenu" />
         </div>
+            <asp:ListBox ID="lstStockList" runat="server" CssClass="styled-label lstStockList" OnSelectedIndexChanged="lstStockList_SelectedIndexChanged1" Height="309px" Width="366px"></asp:ListBox>
     </form>
 </body>
 </html>

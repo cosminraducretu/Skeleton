@@ -117,4 +117,21 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
+
+
+    protected void lstStockList_SelectedIndexChanged1(object sender, EventArgs e)
+    {
+        // Handle the event when the selected index of the list box changes
+        Int32 StockID;
+        if (lstStockList.SelectedIndex != -1)
+        {
+            StockID = Convert.ToInt32(lstStockList.SelectedValue);
+            Session["StockID"] = StockID;
+            // You can add any additional logic here if needed
+        }
+        else
+        {
+            lblError.Text = "Please select a valid item from the list.";
+        }
+    }
 }
