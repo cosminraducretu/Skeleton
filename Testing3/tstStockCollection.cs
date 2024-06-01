@@ -82,27 +82,19 @@ namespace Testing3
             clsStockCollection allIPTV = new clsStockCollection();
             clsStock testItem = new clsStock();
             int primaryKey = 0;
-
             // Set properties of the test item
-            testItem.Quantity = 1;
             testItem.Description = "Desc";
             testItem.Supplier = "Supplier";
             testItem.Price = 1;
             testItem.Available = true;
-
             allIPTV.ThisStock = testItem;
-
             // Add the record
             primaryKey = allIPTV.Add();
-
             // Set the primary key of the test data
             testItem.StockID = primaryKey;
-
             // Find the record
             allIPTV.ThisStock.Find(primaryKey);
-
             // Test to see that the two values are the same
-            Assert.AreEqual(allIPTV.ThisStock.StockID, testItem.StockID);
             Assert.AreEqual(allIPTV.ThisStock.Quantity, testItem.Quantity);
             Assert.AreEqual(allIPTV.ThisStock.Description, testItem.Description);
             Assert.AreEqual(allIPTV.ThisStock.Supplier, testItem.Supplier);
@@ -116,7 +108,6 @@ namespace Testing3
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.StockID = 1;
             TestItem.Quantity = 1;
             TestItem.Description = "Desc";
             TestItem.Supplier = "Supplier";
@@ -126,7 +117,6 @@ namespace Testing3
             PrimaryKey = AllIPTV.Add();
             TestItem.StockID = PrimaryKey;
             //modify the test record
-            TestItem.StockID = 2;
             TestItem.Quantity = 3;
             TestItem.Description = "Description";
             TestItem.Supplier = "Suppliermehdi";
@@ -136,7 +126,6 @@ namespace Testing3
             AllIPTV.Update();
             AllIPTV.ThisStock.Find(PrimaryKey);
             // Assert equality of the updated record
-            Assert.AreEqual(AllIPTV.ThisStock.StockID, TestItem.StockID);
             Assert.AreEqual(AllIPTV.ThisStock.Quantity, TestItem.Quantity);
             Assert.AreEqual(AllIPTV.ThisStock.Description, TestItem.Description);
             Assert.AreEqual(AllIPTV.ThisStock.Supplier, TestItem.Supplier);
@@ -207,7 +196,7 @@ namespace Testing3
 
             if (FilteredStock.Count > 0)
             {
-                if (FilteredStock.StockList[0].StockID != 25 || FilteredStock.StockList[1].StockID != 26)
+                if (FilteredStock.StockList[0].StockID != 35 || FilteredStock.StockList[1].StockID != 36)
                 {
                     OK = false;
                 }

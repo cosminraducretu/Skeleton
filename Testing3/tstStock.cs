@@ -117,7 +117,7 @@ namespace Testing3
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //test to see if the result is true
@@ -135,11 +135,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.StockID != 21)
+            if (AnIPTV.StockID != 35)
             {
                 OK = false;
             }
@@ -157,7 +157,7 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
@@ -179,11 +179,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Description != "##")
+            if (AnIPTV.Description != "Desc")
             {
                 OK = false;
             }
@@ -201,7 +201,7 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
@@ -223,11 +223,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Price != 33)
+            if (AnIPTV.Price != 1)
             {
                 OK = false;
             }
@@ -245,11 +245,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 21;
+            Int32 StockID = 35;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Supplier != "name")
+            if (AnIPTV.Supplier != "Supplier")
             {
                 OK = false;
             }
@@ -266,7 +266,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -288,7 +288,7 @@ namespace Testing3
             //this should fail
             string quantity = "";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -305,7 +305,7 @@ namespace Testing3
             string quantity = ""; //this should fail
             quantity = quantity.PadRight(500, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -319,8 +319,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string quantity = "500"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                     //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -334,8 +334,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string quantity = "499"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                     //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -349,8 +349,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string quantity = "501"; //this should fail
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                     //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -364,8 +364,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string quantity = "250"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                     //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -380,7 +380,7 @@ namespace Testing3
             //create some test data to pass to the method
             string quantity = "1"; //this should pass
                                    //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -395,7 +395,7 @@ namespace Testing3
             //create some test data to pass to the method
             string quantity = "2"; //this should pass
                                    //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -413,7 +413,7 @@ namespace Testing3
             //this should fail
             string price = "";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -430,7 +430,7 @@ namespace Testing3
             string price = ""; //this should fail
             price = price.PadRight(500, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -444,8 +444,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "100"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                  //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -459,8 +459,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "99"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                 //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -474,8 +474,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "101"; //this should fail
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                  //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -489,8 +489,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "50"; //this should pass
-                                       //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                 //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -504,8 +504,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "1"; //this should pass
-                                   //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -519,8 +519,8 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string price = "2"; //this should pass
-                                   //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -540,7 +540,7 @@ namespace Testing3
             //this should fail
             string supplier = "";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -554,7 +554,7 @@ namespace Testing3
             //this should pass
             string supplier = "a";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -569,7 +569,7 @@ namespace Testing3
             //this should pass
             string supplier = "aa";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -584,7 +584,7 @@ namespace Testing3
             string supplier = "";
             supplier = supplier.PadRight(49, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -599,7 +599,7 @@ namespace Testing3
             string supplier = "";
             supplier = supplier.PadRight(50, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -616,7 +616,7 @@ namespace Testing3
             string supplier = "";
             supplier = supplier.PadRight(51, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -631,7 +631,7 @@ namespace Testing3
             string supplier = "";
             supplier = supplier.PadRight(25, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -650,7 +650,7 @@ namespace Testing3
             //this should fail
             string description = "";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -664,7 +664,7 @@ namespace Testing3
             //this should pass
             string description = "a";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -679,7 +679,7 @@ namespace Testing3
             //this should pass
             string description = "aa";
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -693,8 +693,8 @@ namespace Testing3
             //create some test data to pass to the method
             string description = "";
             description = description.PadRight(499, 'a'); //this should pass
-                                                         //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                                          //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -708,8 +708,8 @@ namespace Testing3
             //create some test data to pass to the method
             string description = "";
             description = description.PadRight(500, 'a'); //this should pass
-                                                         //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                                          //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -726,7 +726,7 @@ namespace Testing3
             string description = "";
             description = description.PadRight(501, 'a');
             //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -740,8 +740,8 @@ namespace Testing3
             //create some test data to pass to the method
             string description = "";
             description = description.PadRight(250, 'a'); //this should pass
-                                                         //invoke the method
-            Error = AnIPTV.Valid(description, supplier, true, quantity, price);
+                                                          //invoke the method
+            Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
