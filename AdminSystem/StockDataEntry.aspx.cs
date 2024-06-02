@@ -15,7 +15,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        StockID = Convert.ToInt32(Session["ID"]);
+        //create a new instance of clsUser
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session object
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
+        StockID = Convert.ToInt32(Session["StockID"]);
         if (IsPostBack == false)
         {
             if (StockID != -1)
@@ -51,14 +58,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-
-
-
-
-
-
-
-
         // create a new instance of clsStock
         clsStock AStock = new clsStock();
 
@@ -67,6 +66,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string supplier = txtSupplier.Text;
         string description = txtDescription.Text;
         string available = chkActive.Text;
+        Console.WriteLine(quantity);
+        Console.WriteLine(price);
+        Console.WriteLine(supplier);
+        Console.WriteLine(available);
 
         string Error = "";
 
@@ -98,17 +101,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 StockList.Update();
             }
             //navigate to the view page 
+            Response.Redirect("StockList.aspx");
         }
         else
         {
             //display the error message 
             lblError.Text = Error;
         }
-
-
-
-
-
     }
 
 

@@ -40,11 +40,12 @@
         .lblEnterAvailability {
             top: 446px;
             left: 14px;
+            right: 186px;
         }
 
         .txtFilterAvailability {
             top: 445px;
-            left: 352px;
+            left: 402px;
             width: 115px;
         }
 
@@ -93,7 +94,7 @@
             <asp:Button ID="btnDelete" runat="server" CssClass="styled-button btnDelete" OnClick="btnDelete_Click" Text="Delete" />
             <asp:Button ID="btnEdit" runat="server" CssClass="styled-button btnEdit" Text="Edit" OnClick="btnEdit_Click" />
             <asp:Label ID="lblError" runat="server" CssClass="styled-label lblError"></asp:Label>
-            <asp:Label ID="lblEnterAvailability" runat="server" CssClass="styled-label lblEnterAvailability" Text="Shoose if want availble IPTVs that are available or not:"></asp:Label>
+            <asp:Label ID="lblEnterAvailability" runat="server" CssClass="styled-label lblEnterAvailability" Text="choose if you want to filter availble IPTVs that are available or not Available:"></asp:Label>
             <asp:CheckBox ID="Checkav" runat="server" CssClass="styled-textbox txtFilterAvailability" Text="[Availability]"></asp:CheckBox>
             <asp:Button ID="btnFilter" runat="server" CssClass="styled-button btnFilter" OnClick="btnFilter_Click" Text="Apply Filter" />
             <asp:Button ID="btnClearFilter" runat="server" CssClass="styled-button btnClearFilter" OnClick="btnClearFilter_Click" Text="Clear Filter" />

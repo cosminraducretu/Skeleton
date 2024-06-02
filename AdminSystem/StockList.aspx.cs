@@ -84,7 +84,7 @@ public partial class _1_List : System.Web.UI.Page
         // Set the name of the primary key
         listControl.DataValueField = "StockID";
         // Set the name of the field to display
-        listControl.DataTextField = "IPTVDescription";
+        listControl.DataTextField = "Description";
         // Bind the data to the list control
         listControl.DataBind();
     }
@@ -106,7 +106,7 @@ public partial class _1_List : System.Web.UI.Page
         // Set the name of the primary key
         listControl.DataValueField = "StockID";
         // Set the name of the field to display
-        listControl.DataTextField = "IPTVDescription";
+        listControl.DataTextField = "Description";
         // Bind the data to the list control
         listControl.DataBind();
 
