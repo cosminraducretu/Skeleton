@@ -52,7 +52,7 @@
         <asp:Label ID="lblEnter" runat="server" style="z-index: 1; left: 51px; top: 365px; position: absolute" Text="Enter a SubscriptionPlan  :"></asp:Label>
         <asp:TextBox ID="txtEnter" runat="server" style="z-index: 1; left: 226px; top: 364px; position: absolute; width: 80px; right: 988px"></asp:TextBox>
         <p>
-            <asp:Button ID="btnRTMM" runat="server" OnClick="btnRTMM_Click" style="z-index: 1; left: 361px; top: 411px; position: absolute; width: 131px" Text="Return to Main Menu" />
+            <asp:Button ID="btnRTMM" runat="server" OnClick="btnRTMM_Click" style="z-index: 1; left: 361px; top: 411px; position: absolute; width: 136px" Text="Return to Main Menu" />
         </p>
     </form>
 
