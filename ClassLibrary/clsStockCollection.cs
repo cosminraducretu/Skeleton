@@ -105,34 +105,39 @@ namespace ClassLibrary
         }
         void PopulateArray(clsDataConnection DB)
         {
-            //populates the array list based on the data table in the parameter DB 
-            //variable for the index 
-            Int32 index = 0;
-            //variable to store the record count 
-            Int32 RecordCount;
-            //get the count of records
-            RecordCount = DB.Count;
-            //clear the private list to process
             mStockList = new List<clsStock>();
-            while (index < RecordCount)
+            for (int Index = 0; Index < DB.Count; Index++)
             {
-                //create a blank stock object
-                clsStock AnStock = new clsStock();
-                //read in the fields from the current record
-                AnStock.StockID = Convert.ToInt32(DB.DataTable.Rows[index]["StockID"]);
-                AnStock.Quantity = Convert.ToInt32(DB.DataTable.Rows[index]["Quantity"]);
-                AnStock.Description = Convert.ToString(DB.DataTable.Rows[index]["IPTVDescription"]); // Ensure this matches your database column name
-                AnStock.Price = Convert.ToInt32(DB.DataTable.Rows[index]["Price"]);
-                AnStock.Supplier = Convert.ToString(DB.DataTable.Rows[index]["Supplier"]);
-                AnStock.Available = Convert.ToBoolean(DB.DataTable.Rows[index]["Available"]);
-                //add the record to the private data member
-                mStockList.Add(AnStock);
-                //point at the next record 
-                index++;
+                clsStock AStock = new clsStock
+                {
+                    StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]),
+                    Description = Convert.ToString(DB.DataTable.Rows[Index]["IPTVDescription"]),
+                    Quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["Quantity"]),
+                    Price = Convert.ToInt32(DB.DataTable.Rows[Index]["Price"]),
+                    Available = Convert.ToInt32(DB.DataTable.Rows[Index]["Available"]),
+                    Supplier = Convert.ToString(DB.DataTable.Rows[Index]["Supplier"])
+                };
+                mStockList.Add(AStock);
             }
         }
 
+        public void ReportByAll()
+        {
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Execute the stored procedure to get all records
+            DB.Execute("sproc_tblStock_SelectAll");
+            // Populate the array list with the data table
+            PopulateArray(DB);
+        }
 
 
+        public void ReportByAvailable(int status)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@AvailableStatus", status);
+            DB.Execute("sproc_tblStock_FilterByAvailableStatus");
+            PopulateArray(DB);
+        }
     }
 }

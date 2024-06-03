@@ -32,7 +32,7 @@ namespace Testing3
             TestItem.Description = "Desc";
             TestItem.Supplier = "Supplier";
             TestItem.Price = 1;
-            TestItem.Available = true;
+            TestItem.Available = 1;
             //add the item to the test list
             TestList.Add(TestItem);
             AllIPTV.StockList = TestList;
@@ -49,7 +49,7 @@ namespace Testing3
             TestStock.Description = "Desc";
             TestStock.Supplier = "Supplier";
             TestStock.Price = 1;
-            TestStock.Available = true;
+            TestStock.Available = 1;
             //assign the data to the property
             AllIPTV.ThisStock = TestStock;
             //test to see that the two values are the same 
@@ -69,7 +69,7 @@ namespace Testing3
             TestItem.Description = "Desc";
             TestItem.Supplier = "Supplier";
             TestItem.Price = 1;
-            TestItem.Available = true;
+            TestItem.Available = 1;
             //add the item to the test list
             TestList.Add(TestItem);
             //ASSIGN THE DATA TO THE PROPERTY
@@ -86,7 +86,7 @@ namespace Testing3
             testItem.Description = "Desc";
             testItem.Supplier = "Supplier";
             testItem.Price = 1;
-            testItem.Available = true;
+            testItem.Available = 1;
             allIPTV.ThisStock = testItem;
             // Add the record
             primaryKey = allIPTV.Add();
@@ -112,7 +112,7 @@ namespace Testing3
             TestItem.Description = "Desc";
             TestItem.Supplier = "Supplier";
             TestItem.Price = 1;
-            TestItem.Available = true;
+            TestItem.Available = 1;
             AllIPTV.ThisStock = TestItem;
             PrimaryKey = AllIPTV.Add();
             TestItem.StockID = PrimaryKey;
@@ -121,7 +121,7 @@ namespace Testing3
             TestItem.Description = "Description";
             TestItem.Supplier = "Suppliermehdi";
             TestItem.Price = 10;
-            TestItem.Available = false;
+            TestItem.Available = 1;
             AllIPTV.ThisStock = TestItem;
             AllIPTV.Update();
             AllIPTV.ThisStock.Find(PrimaryKey);
@@ -143,7 +143,7 @@ namespace Testing3
             TestItem.Description = "Desc";
             TestItem.Supplier = "Supp";
             TestItem.Price = 1;
-            TestItem.Available = true;
+            TestItem.Available = 1;
             //set ThisStaff to the test data
             AllIPTV.ThisStock = TestItem;
             //add the record
@@ -168,8 +168,8 @@ namespace Testing3
             // Apply the filter for available items (true or false)
             FilteredStock.ReportByAvailable(true);
 
-            // Check if all items in FilteredStock are available
-            bool allAvailable = FilteredStock.StockList.TrueForAll(stock => stock.Available == true);
+            // Check if all items in FilteredStock are available1
+            bool allAvailable = FilteredStock.StockList.TrueForAll(stock => stock.Available == 1);
 
             // Test to see that the condition holds true
             Assert.IsTrue(allAvailable);
@@ -180,8 +180,8 @@ namespace Testing3
         public void ReportByAvailableNoneFound()
         {
             clsStockCollection FilteredStock = new clsStockCollection();
-            // Apply a filter that should return no records (assuming false means not available)
-            FilteredStock.ReportByAvailable(false);
+            // Apply a filter that should return no records (assuming 2 means some status with no records)
+            FilteredStock.ReportByAvailable(-1);
             // Test to see that there are no records
             Assert.AreEqual(0, FilteredStock.Count);
         }
@@ -208,9 +208,6 @@ namespace Testing3
 
             Assert.IsTrue(OK);
         }
-
-
-
 
     }
 }

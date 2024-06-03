@@ -17,6 +17,12 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayStock();     
         }
+        //create a new instance of clsCustomerUser
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session object
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayStock()
@@ -72,45 +78,41 @@ public partial class _1_List : System.Web.UI.Page
     {
         // Create an instance of the stock collection object
         clsStockCollection AStock = new clsStockCollection();
-        // Retrieve the value of the availability from the presentation layer
-        // Check if the checkbox is checked
-        bool isAvailable = Checkav.Checked;
-        // Call the ReportByAvailable method with the boolean value
-        AStock.ReportByAvailable(isAvailable);
-        // Assuming you have a ListControl (like DropDownList, ListBox, etc.) to display the data
-        ListControl listControl = lstStockList;
+        // Retrieve the selected value from the DropDownList
+        int selectedStatus = Convert.ToInt32(Availability.SelectedValue);        
+        // Call the ReportByAvailable method with the selected status
+        AStock.ReportByAvailable(selectedStatus);
         // Set the data source to the list of stocks in the collection
-        listControl.DataSource = AStock.StockList;
+        lstStockList.DataSource = AStock.StockList;
         // Set the name of the primary key
-        listControl.DataValueField = "StockID";
+        lstStockList.DataValueField = "StockID";
         // Set the name of the field to display
-        listControl.DataTextField = "Description";
+        lstStockList.DataTextField = "Description";
         // Bind the data to the list control
-        listControl.DataBind();
+        lstStockList.DataBind();
     }
+
 
 
     protected void btnClearFilter_Click(object sender, EventArgs e)
     {
         // Create an instance of the stock collection object
         clsStockCollection AStock = new clsStockCollection();
-        // Retrieve the value of the availability from the presentation layer
-        // Check if the checkbox is checked
-        bool isAvailable = Checkav.Checked;
-        // Call the ReportByAvailable method with the boolean value
-        AStock.ReportByAvailable(false); // Assuming false indicates that all items should be considered regardless of availability
-        // Assuming you have a ListControl (like DropDownList, ListBox, etc.) to display the data
-        ListControl listControl = lstStockList;
+        // Call a method to reset the collection to show all items
+        AStock.ReportByAll();
         // Set the data source to the list of stocks in the collection
-        listControl.DataSource = AStock.StockList;
+        lstStockList.DataSource = AStock.StockList;
         // Set the name of the primary key
-        listControl.DataValueField = "StockID";
+        lstStockList.DataValueField = "StockID";
         // Set the name of the field to display
-        listControl.DataTextField = "Description";
+        lstStockList.DataTextField = "Description";
         // Bind the data to the list control
-        listControl.DataBind();
-
+        lstStockList.DataBind();
+        // Optionally reset the DropDownList to "All"
+        Availability.SelectedValue = "-1";
     }
+
+
 
     protected void btnRTN_Click(object sender, EventArgs e)
     {
@@ -134,4 +136,6 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a valid item from the list.";
         }
     }
+
+
 }

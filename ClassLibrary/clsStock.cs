@@ -59,9 +59,9 @@ namespace ClassLibrary
         }
 
         //private data member for the address id property
-        private Boolean mAvailable;
+        private Int32 mAvailable;
         //addressId public property
-        public bool Available
+        public int Available
         {
             get
             {
@@ -127,7 +127,7 @@ namespace ClassLibrary
                 mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
                 mDescription = Convert.ToString(DB.DataTable.Rows[0]["IPTVDescription"]);
                 mSupplier = Convert.ToString(DB.DataTable.Rows[0]["Supplier"]);
-                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+                mAvailable = Convert.ToInt32(DB.DataTable.Rows[0]["Available"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
                 return true;
             }
@@ -157,7 +157,7 @@ namespace ClassLibrary
             {
                 Error += "The description may not be blank. ";
             }
-            else if (description.Length > 500)  
+            else if (description.Length > 500)
             {
                 Error += "The description must be less than or equal to 500 characters. ";
             }
