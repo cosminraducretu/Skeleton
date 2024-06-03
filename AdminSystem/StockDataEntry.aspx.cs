@@ -47,7 +47,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtDescription.Text = Stock.ThisStock.Description.ToString();
             txtPrice.Text = Stock.ThisStock.Price.ToString();
             txtSupplier.Text = Stock.ThisStock.Supplier.ToString();
-            chkActive.Checked = Stock.ThisStock.Available;
+            // Directly assign the integer value of Available to the Checked property
+            chkActive.Checked = (Stock.ThisStock.Available == 1);
         }
         else
         {
@@ -55,6 +56,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Console.WriteLine("Stock record not found.");
         }
     }
+
+
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -65,16 +69,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string price = txtPrice.Text;
         string supplier = txtSupplier.Text;
         string description = txtDescription.Text;
-        string available = chkActive.Text;
+        // Convert the boolean value of chkActive.Checked to an integer
+        int Available = chkActive.Checked ? 1 : 0;
         Console.WriteLine(quantity);
         Console.WriteLine(price);
         Console.WriteLine(supplier);
-        Console.WriteLine(available);
+        Console.WriteLine(Available);
 
         string Error = "";
 
         // Validate the input data
-        Error = AStock.Valid(description, supplier, quantity, price);
+        Error = AStock.Valid(description, supplier, quantity, price, Available);
+
 
         if (Error == "")
         {
@@ -83,8 +89,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.Description = description;
             AStock.Price = Convert.ToInt32(price);
             AStock.Quantity = Convert.ToInt32(quantity);
-            AStock.Available = chkActive.Checked;
-
+            AStock.Available = Available;
 
             //create a new instance of the address collection 
             clsStockCollection StockList = new clsStockCollection();
@@ -144,7 +149,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtSupplier.Text = AnIPTV.Supplier;
                 txtPrice.Text = AnIPTV.Price.ToString();
                 txtQuantity.Text = AnIPTV.Quantity.ToString();
-                chkActive.Checked = AnIPTV.Available;
+                // Convert the int value to bool before assigning to chkActive.Checked
+                chkActive.Checked = AnIPTV.Available == 1 ? true : false;
             }
             else
             {

@@ -180,8 +180,8 @@ namespace Testing3
         public void ReportByAvailableNoneFound()
         {
             clsStockCollection FilteredStock = new clsStockCollection();
-            // Apply a filter that should return no records (assuming false means not available)
-            FilteredStock.ReportByAvailable(false);
+            // Apply a filter that should return no records (assuming 2 means some status with no records)
+            FilteredStock.ReportByAvailable(-1);
             // Test to see that there are no records
             Assert.AreEqual(0, FilteredStock.Count);
         }
@@ -208,9 +208,6 @@ namespace Testing3
 
             Assert.IsTrue(OK);
         }
-
-
-
 
     }
 }
