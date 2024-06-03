@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -79,7 +80,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
 
         // Validate the input data
-        Error = AStock.Valid(description, supplier, quantity, price, Available);
+        Error = AStock.Valid(description, supplier, quantity, price);
 
 
         if (Error == "")
@@ -167,7 +168,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Clear the form fields
             ClearFormFields();
         }
-    
+
     }
 
     private void ClearFormFields()

@@ -143,7 +143,7 @@ namespace ClassLibrary
 
         /****** Valid METHOD ******/
 
-        public string Valid(string description, string supplier, string quantity, string price, int Available)
+        public string Valid(string description, string supplier, string quantity, string price)
         {
             //create a string variable to store the error
             String Error = "";
@@ -157,9 +157,9 @@ namespace ClassLibrary
             {
                 Error += "The description may not be blank. ";
             }
-            else if (description.Length > 50)
+            else if (description.Length > 500)
             {
-                Error += "The description must be less than or equal to 50 characters. ";
+                Error += "The description must be less than or equal to 500 characters. ";
             }
 
             // Validate quantity
@@ -169,23 +169,13 @@ namespace ClassLibrary
             }
             else
             {
-                if (quantityTemp < 0)
+                if (quantityTemp < 1)
                 {
-                    Error += "The quantity must be 0 or more. ";
+                    Error += "The quantity must be 1 or more. ";
                 }
                 if (quantityTemp > 500)
                 {
-                    Error += "The quantity must be less than or equal to 500. ";
-                }
-                // Additional check: If Available checkbox is unchecked, quantity should be 0
-                if (Available == 1 && quantityTemp != 0)
-                {
-                    Error += "If the item is not available, the quantity should be 0. ";
-                }
-                // Additional check: If Available checkbox is checked, quantity should not be 0
-                if (Available != 0 && quantityTemp == 0)
-                {
-                    Error += "If the item is available, the quantity should not be 0. ";
+                    Error += "The quantity must be less than or equal to 50000. ";
                 }
             }
 
@@ -202,7 +192,7 @@ namespace ClassLibrary
                 }
                 if (priceTemp > 100)
                 {
-                    Error += "The price must be less than or equal to 100. ";
+                    Error += "The price must be less than or equal to 50000. ";
                 }
             }
 
