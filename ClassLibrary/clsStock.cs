@@ -157,9 +157,9 @@ namespace ClassLibrary
             {
                 Error += "The description may not be blank. ";
             }
-            else if (description.Length > 500)
+            else if (description.Length > 50)
             {
-                Error += "The description must be less than or equal to 500 characters. ";
+                Error += "The description must be less than or equal to 50 characters. ";
             }
 
             // Validate quantity
@@ -173,9 +173,9 @@ namespace ClassLibrary
                 {
                     Error += "The quantity must be 1 or more. ";
                 }
-                if (quantityTemp > 500)
+                if (quantityTemp > 1000)
                 {
-                    Error += "The quantity must be less than or equal to 50000. ";
+                    Error += "The quantity must be less than or equal to 1000. ";
                 }
             }
 
@@ -192,7 +192,7 @@ namespace ClassLibrary
                 }
                 if (priceTemp > 100)
                 {
-                    Error += "The price must be less than or equal to 50000. ";
+                    Error += "The price must be less than or equal to 100. ";
                 }
             }
 

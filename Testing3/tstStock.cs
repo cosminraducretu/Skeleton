@@ -12,7 +12,7 @@ namespace Testing3
     {
         // Test data
         string description = "desc"; 
-        string available = "true"; 
+        string available = "1"; 
         string supplier = "Suplr";
         string quantity = "10";
         string price = "20";
@@ -88,7 +88,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock AnIPTV = new clsStock();
             //create some test data to assign to the property
-            Boolean TestData = true;
+            Int32 TestData = 1;
             //assign the data to the property
             AnIPTV.Available = TestData;
             //test to see that the two values are the same
@@ -117,7 +117,7 @@ namespace Testing3
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //test to see if the result is true
@@ -135,11 +135,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.StockID != 35)
+            if (AnIPTV.StockID != 1092)
             {
                 OK = false;
             }
@@ -157,11 +157,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1079;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Quantity != 1)
+            if (AnIPTV.Quantity != 0)
             {
                 OK = false;
             }
@@ -179,11 +179,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Description != "Desc")
+            if (AnIPTV.Description != "IPTV Kids Channel Pack")
             {
                 OK = false;
             }
@@ -201,11 +201,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Available != true)
+            if (AnIPTV.Available != 1)
             {
                 OK = false;
             }
@@ -223,11 +223,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Price != 1)
+            if (AnIPTV.Price != 40)
             {
                 OK = false;
             }
@@ -245,11 +245,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockID = 35;
+            Int32 StockID = 1092;
             //invoke the method
             Found = AnIPTV.Find(StockID);
             //check the address id property
-            if (AnIPTV.Supplier != "Supplier")
+            if (AnIPTV.Supplier != "KidsZone Media")
             {
                 OK = false;
             }
@@ -348,7 +348,7 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string quantity = "501"; //this should fail
+            string quantity = "1001"; //this should fail
                                      //invoke the method
             Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
@@ -692,7 +692,7 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string description = "";
-            description = description.PadRight(499, 'a'); //this should pass
+            description = description.PadRight(49, 'a'); //this should pass
                                                           //invoke the method
             Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
@@ -707,7 +707,7 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string description = "";
-            description = description.PadRight(500, 'a'); //this should pass
+            description = description.PadRight(50, 'a'); //this should pass
                                                           //invoke the method
             Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct
@@ -739,7 +739,7 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string description = "";
-            description = description.PadRight(250, 'a'); //this should pass
+            description = description.PadRight(50, 'a'); //this should pass
                                                           //invoke the method
             Error = AnIPTV.Valid(description, supplier, quantity, price);
             //test to see that the result is correct

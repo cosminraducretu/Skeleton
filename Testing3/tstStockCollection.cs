@@ -66,8 +66,8 @@ namespace Testing3
             //set its properties
             TestItem.StockID = 1;
             TestItem.Quantity = 1;
-            TestItem.Description = "Desc";
-            TestItem.Supplier = "Supplier";
+            TestItem.Description = "IPTV Premium Package";
+            TestItem.Supplier = "Lifestyle Media";
             TestItem.Price = 1;
             TestItem.Available = 1;
             //add the item to the test list
@@ -83,8 +83,8 @@ namespace Testing3
             clsStock testItem = new clsStock();
             int primaryKey = 0;
             // Set properties of the test item
-            testItem.Description = "Desc";
-            testItem.Supplier = "Supplier";
+            testItem.Description = "IPTV Premium Package";
+            testItem.Supplier = "Lifestyle Media";
             testItem.Price = 1;
             testItem.Available = 1;
             allIPTV.ThisStock = testItem;
@@ -109,8 +109,8 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Quantity = 1;
-            TestItem.Description = "Desc";
-            TestItem.Supplier = "Supplier";
+            TestItem.Description = "IPTV Premium Package";
+            TestItem.Supplier = "Lifestyle Media";
             TestItem.Price = 1;
             TestItem.Available = 1;
             AllIPTV.ThisStock = TestItem;
@@ -118,8 +118,8 @@ namespace Testing3
             TestItem.StockID = PrimaryKey;
             //modify the test record
             TestItem.Quantity = 3;
-            TestItem.Description = "Description";
-            TestItem.Supplier = "Suppliermehdi";
+            TestItem.Description = "Test Update Method";
+            TestItem.Supplier = "Test Update Method";
             TestItem.Price = 10;
             TestItem.Available = 1;
             AllIPTV.ThisStock = TestItem;
@@ -140,8 +140,8 @@ namespace Testing3
             //set its properties
             TestItem.StockID = 1;
             TestItem.Quantity = 1;
-            TestItem.Description = "Desc";
-            TestItem.Supplier = "Supp";
+            TestItem.Description = "Test Delete Method";
+            TestItem.Supplier = "Test DeleteMethod";
             TestItem.Price = 1;
             TestItem.Available = 1;
             //set ThisStaff to the test data
@@ -196,7 +196,7 @@ namespace Testing3
 
             if (FilteredStock.Count > 0)
             {
-                if (FilteredStock.StockList[0].StockID != 35 || FilteredStock.StockList[1].StockID != 36)
+                if (FilteredStock.StockList[0].StockID != 1089 || FilteredStock.StockList[1].StockID != 1090)
                 {
                     OK = false;
                 }
